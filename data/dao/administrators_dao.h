@@ -8,10 +8,11 @@ class AdministratorsDAO : public IAdministratorsDAO
 {
 public:
     AdministratorsDAO() {}
-    LoginAndPassword findAdministratorByLogin(String& login) override;
-    Map findAllAdministrators() override;
-    void addAdministrator(String& login, String& password) override;
-    void removeAdministratorByLogin(String& login) override;
+    QPair<QString, QString> findAdministratorByLogin(QString& login) override;
+    QMap<QString, QString> findAllAdministrators() override;
+    void addAdministrator(QString& login, QString& password) override;
+    void removeAdministratorByLogin(QString& login) override;
+    virtual void changePassword(QString& oldPassword, QString& newPassword) override;
     ~AdministratorsDAO() {}
 };
 

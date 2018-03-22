@@ -2,17 +2,15 @@
 #define IADMINISTRATORSDAO_H
 
 #include <iostream>
-#include <map>
+#include <QPair>
+#include <QMap>
 
 struct IAdministratorsDAO{
-    typedef std::string String;
-    typedef std::pair<String, String> LoginAndPassword;
-    typedef std::map<String, String> Map;
-
-    virtual LoginAndPassword findAdministratorByLogin(String& login) = 0;
-    virtual Map findAllAdministrators() = 0;
-    virtual void addAdministrator(String& login, String& password) = 0;
-    virtual void removeAdministratorByLogin(String& login) = 0;
+    virtual QPair<QString, QString> findAdministratorByLogin(QString& login) = 0;
+    virtual QMap<QString, QString> findAllAdministrators() = 0;
+    virtual void addAdministrator(QString& login, QString& password) = 0;
+    virtual void removeAdministratorByLogin(QString& login) = 0;
+    virtual void changePassword(QString& oldPassword, QString& newPassword) = 0;
     virtual ~IAdministratorsDAO() {}
 };
 

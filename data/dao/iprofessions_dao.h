@@ -2,14 +2,14 @@
 #define IPROFESSIONSDAO_H
 
 #include <iostream>
-#include <vector>
+#include <QVector>
 
 struct IProfessionsDAO{
-    typedef std::string String;
-    typedef std::vector<String> StringVector;
-
-    virtual String findProfessionById(long id) = 0;
-    virtual StringVector findAllProfessions() = 0;
+    virtual QString findProfessionById(long id) = 0;
+    virtual QVector<QString> findAllProfessions() = 0;
+    virtual void addProfession(QString& name) = 0;
+    virtual void removeProfessionByName(QString& name) = 0;
+    virtual void changeNameProfession(QString& oldName, QString& newName) = 0;
     virtual IProfessionsDAO() {}
 };
 

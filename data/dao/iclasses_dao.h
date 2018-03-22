@@ -2,14 +2,14 @@
 #define ICLASSESDAO_H
 
 #include <iostream>
-#include <vector>
+#include <QVector>
 
 struct IClassesDAO{
-    typedef std::string String;
-    typedef std::vector<String> StringVector;
-
-    virtual String findClassById(long id) = 0;
-    virtual StringVector findAllClasses() = 0;
+    virtual QString findClassById(long id) = 0;
+    virtual QVector<QString> findAllClasses() = 0;
+    virtual void addClass(QString& name) = 0;
+    virtual void removeClassByName(QString& name) = 0;
+    virtual void changeNameClass(QString& oldName, QString& newName) = 0;
     virtual ~IClassesDAO() {}
 };
 
