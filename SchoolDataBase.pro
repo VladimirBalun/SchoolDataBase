@@ -8,24 +8,28 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
-        main.cpp \
-        views/forms/main_form.cpp \
-        data/dao/administrators_dao.cpp \
-        utils/database.cpp \
-    data/entity/pupil.cpp \
-    data/entity/parent.cpp
-
+    main.cpp \
+    Exceptions/NotWorkingRequest.cpp \
+    Data/DAO/AdministratorsDAO.cpp \
+    Data/Entity/Parent.cpp \
+    Data/Entity/Pupil.cpp \
+    Utils/DataBase.cpp \
+    Views/Forms/LoginForm.cpp \
+    Views/Forms/MainForm.cpp
 
 HEADERS += \
-        views/forms/main_form.h \
-        data/dao/iadministrators_dao.h \
-        data/dao/iprofessions_dao.h \
-        data/dao/iclasses_dao.h \
-        data/dao/administrators_dao.h \
-        utils/database.h \
-    data/dao/ipupils_dao.h \
-    data/entity/pupil.h \
-    data/entity/parent.h
+    Exceptions/NotWorkingRequest.h \
+    Data/DAO/AdministratorsDAO.h \
+    Data/DAO/IAdministratorsDAO.h \
+    Data/DAO/IClassesDAO.h \
+    Data/DAO/IProfessionsDAO.h \
+    Data/DAO/IPupilsDAO.h \
+    Data/Entity/Parent.h \
+    Data/Entity/Pupil.h \
+    Utils/DataBase.h \
+    Views/Forms/LoginForm.h \
+    Views/Forms/MainForm.h
 
 FORMS += \
-        views/forms/main_form.ui
+    Views/Forms/LogInForm.ui \
+    Views/Forms/MainForm.ui
