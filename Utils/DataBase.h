@@ -1,19 +1,20 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include <QSql>
+#include <QtSql>
 #include <QtSql/QSqlDatabase>
+#include <QCoreApplication>
 #include <QDebug>
 
 class DataBase
 {
 public:
     static DataBase* getInstance();
-    void connect();
+    QSqlQuery execSelect(QString& strQuery);
     ~DataBase() {}
 private:
     QSqlDatabase dataBase;
-    DataBase() {}
+    DataBase();
 };
 
 #endif // DATABASE_H

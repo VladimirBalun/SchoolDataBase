@@ -2,12 +2,14 @@
 #define ADMINISTRATORS_DAO_H
 
 #include <QtSql>
+#include "Utils/DataBase.h"
 #include "IAdministratorsDAO.h"
 #include "Exceptions/AdministratorNotFound.h"
 #include "Exceptions/NotWorkingRequest.h"
 
 class AdministratorsDAO : public IAdministratorsDAO
 {
+    DataBase* dataBase = DataBase::getInstance();
 public:
     AdministratorsDAO() {}
     QPair<QString, QString> findAdministratorByLogin(QString& login) override;

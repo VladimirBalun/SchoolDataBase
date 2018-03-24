@@ -1,12 +1,13 @@
 #include "LoginForm.h"
 #include "ui_login_form.h"
-#include <QKeyEvent>
+#include <iostream>
 
 LoginForm::LoginForm(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginForm)
 {
     ui->setupUi(this);
+    std::cout << "Start of application\n";
     administratorsService = new AdministratorsService;
     connect(ui->btnLogin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnLogin()));
     connect(ui->cbxShowPassword, SIGNAL(clicked(bool)), this, SLOT(clickedCbxShowPassword()));

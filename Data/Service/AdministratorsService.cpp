@@ -1,4 +1,5 @@
 #include "AdministratorsService.h"
+#include <iostream>
 
 AdministratorsService::AdministratorsService()
 {
@@ -49,6 +50,7 @@ bool AdministratorsService::changePasswordAdministratoByLoginr(QString &login, Q
 bool AdministratorsService::isExistAdministrator(QString &login, QString &password)
 {
     QPair<QString, QString> admin;
+    qDebug() << "SERVICE\n";
     try
     {
         admin = administratorsDAO->findAdministratorByLogin(login);

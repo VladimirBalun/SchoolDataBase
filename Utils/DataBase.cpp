@@ -1,4 +1,21 @@
 #include "DataBase.h"
+#include <iostream>
+
+DataBase::DataBase()
+{
+    std::string str = "/home/vova/Desktop/build-SchoolDataBase-Desktop-Release/School.db";
+    std::cout << "Path: " << str;
+    dataBase = QSqlDatabase::addDatabase("QSQLITE");
+    dataBase.setDatabaseName(str.c_str());
+    if(dataBase.open())
+    {
+        std::cout << "Connection with database was successful";
+    }
+    else
+    {
+        std::cout << "Connection with database wasn't successful";
+    }
+}
 
 DataBase* DataBase::getInstance()
 {
@@ -6,19 +23,10 @@ DataBase* DataBase::getInstance()
     return &instance;
 }
 
-void DataBase::connect()
+QSqlQuery DataBase::execSelect(QString &strQuery)
 {
-    dataBase = QSqlDatabase::addDatabase("QMYSQL");
-    dataBase.setHostName("localhost");
-    dataBase.setDatabaseName("shool");
-    dataBase.setUserName("root");
-    dataBase.setPassword("admin");
-    if(dataBase.isOpen())
-    {
-        qDebug() << "Connection with database was successful";
-    }
-    else
-    {
-        qDebug() << "Connection with database wasn' successful";
-    }
+    QSqlQuery query(strQuery);
+    query.exec();
+    return query;
 }
+

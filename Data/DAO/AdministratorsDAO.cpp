@@ -1,12 +1,14 @@
 #include "AdministratorsDAO.h"
+#include <iostream>
 
 QPair<QString, QString> AdministratorsDAO::findAdministratorByLogin(QString& login)
 {
     QSqlQuery query;
     query.prepare("SELECT a.login, a.password "
                   "FROM administrators a "
-                  "WHERE a.login = ':login'");
+                  "WHERE a.login = :login");
     query.bindValue(":login", login);
+    query.exec();
     if(query.next())
     {
         QPair<QString, QString> admin;
@@ -17,7 +19,7 @@ QPair<QString, QString> AdministratorsDAO::findAdministratorByLogin(QString& log
     else
     {
         QString exceptionMessage = "Administrator [" + login + "] isn't exist.";
-        throw new AdministratorNotFound(exceptionMessage);
+        throw AdministratorNotFound(exceptionMessage);
     }
 }
 
@@ -27,6 +29,7 @@ QMap<QString, QString> AdministratorsDAO::findAllAdministrators()
     QSqlQuery query;
     query.prepare("SELECT a.login, a.password "
                   "FROM administrators a");
+    query.exec();
     while(query.next())
     {
         QString login = QString(query.value(0).toString());
@@ -45,8 +48,8 @@ void AdministratorsDAO::addAdministrator(QString& login, QString& password)
     query.bindValue(":password", password);
     if(!query.exec())
     {
-        QString exceptionMessage = "Administrator [" + login + "] was'n added. Query: " + query.lastQuery();
-        throw new NotWorkingRequest(QString(exceptionMessage));
+        QString exceptionMessage = "Error in adding an administrator[" + login + "]. Query: " + query.lastQuery();
+        throw NotWorkingRequest(QString(exceptionMessage));
     }
 }
 
@@ -58,8 +61,8 @@ void AdministratorsDAO::removeAdministratorByLogin(QString& login)
     query.bindValue(":login", login);
     if(!query.exec())
     {
-        QString exceptionMessage = "Administrator [" + login + "] was'n deleted. Query: " + query.lastQuery();
-        throw new NotWorkingRequest(QString(exceptionMessage));
+        QString exceptionMessage = "Error in deleting an administrator[" + login + "]. Query: " + query.lastQuery();
+        throw NotWorkingRequest(QString(exceptionMessage));
     }
 }
 
@@ -73,7 +76,7 @@ void AdministratorsDAO::changePasswordAdministratorByLogin(QString& login, QStri
     query.bindValue(":newPassword", newPassword);
     if(!query.exec())
     {
-        QString exceptionMessage = "Password of administrator [" + login + "] was'n changed. Query: " + query.lastQuery();
-        throw new NotWorkingRequest(QString(exceptionMessage));
+        QString exceptionMessage = "Error in changing administrator[" + login + "] password. Query: " + query.lastQuery();
+        throw NotWorkingRequest(QString(exceptionMessage));
     }
 }
