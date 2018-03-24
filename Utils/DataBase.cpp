@@ -1,22 +1,18 @@
 #include "DataBase.h"
 
-DataBase *DataBase::getInstance()
+DataBase* DataBase::getInstance()
 {
-    if(instance)
-    {
-        return instance;
-    }
-    else
-    {
-        connectWithDB();
-        instance = new DataBase;
-        return instance;
-    }
+    static DataBase instance;
+    return &instance;
 }
 
-void DataBase::connectWithDB()
+void DataBase::connect()
 {
     dataBase = QSqlDatabase::addDatabase("QMYSQL");
+    dataBase.setHostName("localhost");
+    dataBase.setDatabaseName("shool");
+    dataBase.setUserName("root");
+    dataBase.setPassword("admin");
     if(dataBase.isOpen())
     {
         qDebug() << "Connection with database was successful";
@@ -25,9 +21,4 @@ void DataBase::connectWithDB()
     {
         qDebug() << "Connection with database wasn' successful";
     }
-}
-
-DataBase::~DataBase()
-{
-    delete instance;
 }

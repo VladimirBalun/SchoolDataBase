@@ -1,11 +1,13 @@
 #include "LoginForm.h"
 #include "ui_login_form.h"
+#include <QKeyEvent>
 
 LoginForm::LoginForm(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginForm)
 {
     ui->setupUi(this);
+    administratorsService = new AdministratorsService;
     connect(ui->btnLogin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnLogin()));
     connect(ui->cbxShowPassword, SIGNAL(clicked(bool)), this, SLOT(clickedCbxShowPassword()));
 }
@@ -16,7 +18,7 @@ void LoginForm::clickedBtnLogin()
     QString password = ui->editPassword->text();
     if(isValidForm())
     {
-        if(login == "admin" && password == "admin")
+        if(administratorsService->isExistAdministrator(login, password))
         {
             MainForm* mainForm = new MainForm;
             mainForm->show();
@@ -60,5 +62,6 @@ void LoginForm::clickedCbxShowPassword()
 
 LoginForm::~LoginForm()
 {
+    delete administratorsService;
     delete ui;
 }

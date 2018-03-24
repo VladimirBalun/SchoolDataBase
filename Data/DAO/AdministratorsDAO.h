@@ -3,6 +3,8 @@
 
 #include <QtSql>
 #include "IAdministratorsDAO.h"
+#include "Exceptions/AdministratorNotFound.h"
+#include "Exceptions/NotWorkingRequest.h"
 
 class AdministratorsDAO : public IAdministratorsDAO
 {
@@ -12,7 +14,7 @@ public:
     QMap<QString, QString> findAllAdministrators() override;
     void addAdministrator(QString& login, QString& password) override;
     void removeAdministratorByLogin(QString& login) override;
-    virtual void changePassword(QString& oldPassword, QString& newPassword) override;
+    virtual void changePasswordAdministratorByLogin(QString& login, QString& oldPassword, QString& newPassword) override;
     ~AdministratorsDAO() {}
 };
 

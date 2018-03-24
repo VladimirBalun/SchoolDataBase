@@ -8,13 +8,12 @@
 class DataBase
 {
 public:
-    DataBase* getInstance();
-    ~DataBase();
+    static DataBase* getInstance();
+    void connect();
+    ~DataBase() {}
 private:
-    DataBase* instance;
     QSqlDatabase dataBase;
     DataBase() {}
-    void connectWithDB();
 };
 
 #endif // DATABASE_H

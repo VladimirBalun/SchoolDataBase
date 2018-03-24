@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QDebug>
 #include "MainForm.h"
+#include "Data/Service/IAdministratorsService.h"
+#include "Data/Service/AdministratorsService.h"
 
 namespace Ui {
 class LoginForm;
@@ -17,6 +20,7 @@ public:
     ~LoginForm();
 private:
     Ui::LoginForm *ui;
+    IAdministratorsService* administratorsService;
     bool isValidForm();
 private slots:
     void clickedBtnLogin();

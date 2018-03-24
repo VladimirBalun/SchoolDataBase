@@ -1,7 +1,6 @@
 #ifndef ICLASSESDAO_H
 #define ICLASSESDAO_H
 
-#include <iostream>
 #include <QVector>
 
 struct IClassesDAO{

@@ -10,7 +10,7 @@ struct IAdministratorsDAO{
     virtual QMap<QString, QString> findAllAdministrators() = 0;
     virtual void addAdministrator(QString& login, QString& password) = 0;
     virtual void removeAdministratorByLogin(QString& login) = 0;
-    virtual void changePassword(QString& oldPassword, QString& newPassword) = 0;
+    virtual void changePasswordAdministratorByLogin(QString& login, QString& oldPassword, QString& newPassword) = 0;
     virtual ~IAdministratorsDAO() {}
 };
 
