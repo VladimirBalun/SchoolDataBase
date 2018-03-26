@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>img/password.png</file>
+        <file>img/teacgers.png</file>
+        <file>img/support.png</file>
+        <file>img/sorting.png</file>
+        <file>img/settings.png</file>
+        <file>img/select.png</file>
+        <file>img/search.png</file>
+        <file>img/printer.png</file>
+        <file>img/print.png</file>
+        <file>img/font.png</file>
+        <file>img/delete.png</file>
+        <file>img/add.png</file>
+        <file>img/excel.png</file>
+    </qresource>
+</RCC>

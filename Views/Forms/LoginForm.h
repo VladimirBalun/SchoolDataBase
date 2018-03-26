@@ -12,8 +12,7 @@ namespace Ui {
 class LoginForm;
 }
 
-class LoginForm : public QMainWindow
-{
+class LoginForm : public QMainWindow {
     Q_OBJECT
 public:
     explicit LoginForm(QWidget *parent = 0);

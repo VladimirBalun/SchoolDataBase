@@ -6,8 +6,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-class DataBase
-{
+class DataBase {
 public:
     static DataBase* getInstance();
     QSqlQuery execSelect(QString& strQuery);

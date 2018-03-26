@@ -1,83 +1,58 @@
 #include "AdministratorsService.h"
-#include <iostream>
 
-AdministratorsService::AdministratorsService()
-{
-    administratorsDAO = new AdministratorsDAO;
+AdministratorsService::AdministratorsService() {
+    administratorsDAO = std::make_unique<AdministratorsDAO>();
 }
 
-bool AdministratorsService::addAdministrator(QString &login, QString &password)
-{
-    try
-    {
+bool AdministratorsService::addAdministrator(QString &login, QString &password) {
+    try {
         administratorsDAO->addAdministrator(login, password);
         return true;
-    }
-    catch(NotWorkingRequest& e)
-    {
-        qDebug() << e.what();
+    } catch(NotWorkingRequest& e) {
+        std::cerr << e.what().toStdString() << std::endl;
         return false;
     }
 }
 
-bool AdministratorsService::removeAdministratorByLogin(QString &login)
-{
-    try
-    {
+bool AdministratorsService::removeAdministratorByLogin(QString &login) {
+    try {
         administratorsDAO->removeAdministratorByLogin(login);
-    }
-    catch(NotWorkingRequest& e)
-    {
-        qDebug() << e.what();
+        return true;
+    } catch(NotWorkingRequest& e) {
+        std::cerr << e.what().toStdString() << std::endl;
         return false;
     }
 }
 
-bool AdministratorsService::changePasswordAdministratoByLoginr(QString &login, QString &oldPassword, QString &newPassword)
-{
-    try
-    {
+bool AdministratorsService::changePasswordAdministratoByLogin(QString &login, QString &oldPassword, QString &newPassword) {
+    QString hashPassword = administratorsDAO->hashPassword(oldPassword);
+    if(!isExistAdministrator(login, hashPassword)) {
+        return false;
+    }
+    try {
         administratorsDAO->changePasswordAdministratorByLogin(login, oldPassword, newPassword);
         return true;
-    }
-    catch(NotWorkingRequest& e)
-    {
-        qDebug() << e.what();
+    } catch(NotWorkingRequest& e) {
+        std::cerr << e.what().toStdString() << std::endl;
         return false;
     }
 }
 
-bool AdministratorsService::isExistAdministrator(QString &login, QString &password)
-{
+bool AdministratorsService::isExistAdministrator(QString &login, QString &password) {
     QPair<QString, QString> admin;
-    qDebug() << "SERVICE\n";
-    try
-    {
+    try {
         admin = administratorsDAO->findAdministratorByLogin(login);
-    }
-    catch(AdministratorNotFound& e)
-    {
-        qDebug() << e.what();
+    } catch(AdministratorNotFound& e) {
+        std::cerr << e.what().toStdString() << std::endl;
         return false;
     }
-    QString loginAdmin = admin.first;
-    QString passwordAdmin = admin.second;
-    if(loginAdmin == login && passwordAdmin == password)
-    {
+    if(admin.first == login && admin.second == password) {
         return true;
-    }
-    else
-    {
+    } else {
         return false;
     }
 }
 
-QMap<QString, QString> AdministratorsService::getAllAdministrators()
-{
+QMap<QString, QString> AdministratorsService::getAllAdministrators() {
     return administratorsDAO->findAllAdministrators();
-}
-
-AdministratorsService::~AdministratorsService()
-{
-    delete administratorsDAO;
 }

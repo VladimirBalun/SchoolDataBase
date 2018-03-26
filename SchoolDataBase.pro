@@ -1,13 +1,13 @@
 QT       += core gui sql
 
-CONFIG   += console
+CONFIG += c++14
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SchoolDataBase
 TEMPLATE = app
 
-DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += QT_DEPRECATED_WARNINGS Q_COMPILER_INITIALIZER_LISTS
 
 SOURCES += \
     main.cpp \
@@ -17,7 +17,9 @@ SOURCES += \
     Utils/DataBase.cpp \
     Views/Forms/LoginForm.cpp \
     Views/Forms/MainForm.cpp \
-    Data/Service/AdministratorsService.cpp
+    Data/Service/AdministratorsService.cpp \
+    Data/DAO/PupilsDAO.cpp \
+    Views/Forms/MainFormPageSettings.cpp
 
 HEADERS += \
     Exceptions/NotWorkingRequest.h \
@@ -33,8 +35,13 @@ HEADERS += \
     Views/Forms/MainForm.h \
     Data/Service/IAdministratorsService.h \
     Data/Service/AdministratorsService.h \
-    Exceptions/AdministratorNotFound.h
+    Exceptions/AdministratorNotFound.h \
+    Data/DAO/PupilsDAO.h \
+    Views/Forms/MainFormPageSettings.h
 
 FORMS += \
     Views/Forms/LogInForm.ui \
     Views/Forms/MainForm.ui
+
+RESOURCES += \
+    Resources/img.qrc

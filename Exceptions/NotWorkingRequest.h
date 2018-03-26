@@ -3,8 +3,7 @@
 
 #include <QString>
 
-class NotWorkingRequest
-{
+class NotWorkingRequest {
     QString _message;
 public:
     NotWorkingRequest(QString message) : _message(message) {}

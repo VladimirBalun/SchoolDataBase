@@ -4,8 +4,7 @@
 #include <QString>
 #include <memory>
 
-class Parent
-{
+class Parent {
     QString _name;
     QString _dateBirth;
     QString _address;
@@ -14,7 +13,7 @@ class Parent
         _name(name), _dateBirth(dateBirth), _address(address), _phoneNumber(phoneNumber) {}
 public:
 
-    class Builder{
+    class Builder {
         QString _name;
         QString _dateBirth;
         QString _address;

@@ -3,8 +3,7 @@
 
 #include <QString>
 
-class AdministratorNotFound
-{
+class AdministratorNotFound {
     QString _message;
 public:
     AdministratorNotFound(QString& message) : _message(message) {}

@@ -3,7 +3,7 @@
 
 #include <QVector>
 
-struct IClassesDAO{
+struct IClassesDAO {
     virtual QString findClassById(long id) = 0;
     virtual QVector<QString> findAllClasses() = 0;
     virtual void addClass(QString& name) = 0;

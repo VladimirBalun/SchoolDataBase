@@ -1,10 +1,9 @@
 #include <QApplication>
-#include "Views/Forms/LoginForm.h"
+#include "Views/Forms/MainForm.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    LoginForm loginForm;
-    loginForm.show();
+    MainForm mainForm;
+    mainForm.show();
     return a.exec();
 }

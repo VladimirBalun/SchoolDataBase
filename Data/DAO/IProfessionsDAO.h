@@ -4,7 +4,7 @@
 #include <iostream>
 #include <QVector>
 
-struct IProfessionsDAO{
+struct IProfessionsDAO {
     virtual QString findProfessionById(long id) = 0;
     virtual QVector<QString> findAllProfessions() = 0;
     virtual void addProfession(QString& name) = 0;
