@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabs">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabEmployes">
        <attribute name="title">
@@ -41,7 +41,7 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QPushButton" name="pushButton_15">
+            <widget class="QPushButton" name="pushButton">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -53,6 +53,44 @@
                <width>40</width>
                <height>40</height>
               </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Обновить сотрудников в таблицы и профессии в списке</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../../Resources/img.qrc">
+               <normaloff>:/icons/img/reload.png</normaloff>:/icons/img/reload.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnAddEmploye">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Добавить сотрудника</string>
              </property>
              <property name="text">
               <string/>
@@ -70,7 +108,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_16">
+            <widget class="QPushButton" name="btnRemoveEmploye">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -82,6 +120,12 @@
                <width>40</width>
                <height>40</height>
               </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Удалить сотрудника(ов)</string>
              </property>
              <property name="icon">
               <iconset resource="../../Resources/img.qrc">
@@ -122,6 +166,9 @@
                <height>40</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="toolTip">
               <string>Вывести отчет о сотрудниках</string>
              </property>
@@ -154,6 +201,12 @@
                <height>40</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Распечатать данные о сотрудниках на принтере</string>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -182,6 +235,12 @@
                <width>40</width>
                <height>40</height>
               </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="toolTip">
+              <string>Вывести данные о сотрудниках в Excel</string>
              </property>
              <property name="text">
               <string/>
@@ -216,7 +275,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QTableView" name="tableView"/>
+             <widget class="QTableView" name="tableEmployees"/>
             </item>
            </layout>
           </item>
@@ -271,7 +330,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox_2">
+                 <widget class="QComboBox" name="cbxMethodSortingEmployees">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -281,12 +340,18 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btnSorting">
+                 <widget class="QPushButton" name="btnSortEmployees">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
                     <height>30</height>
                    </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Отсортировать сотрудников выбранным способом</string>
                   </property>
                   <property name="text">
                    <string>Сортировать</string>
@@ -319,7 +384,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox">
+                 <widget class="QComboBox" name="cbxProfessions">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -329,12 +394,18 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btnSelect">
+                 <widget class="QPushButton" name="btnSelectEmployees">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
                     <height>30</height>
                    </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Выбрать сотрудников определенной профессии</string>
                   </property>
                   <property name="text">
                    <string>Выбрать</string>
@@ -362,12 +433,12 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Введите ФИо сотрудника:</string>
+                   <string>Введите ФИ о сотрудника:</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit">
+                 <widget class="QLineEdit" name="editSearchEmployee">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -380,12 +451,18 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton">
+                 <widget class="QPushButton" name="btnSearchEmployees">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
                     <height>30</height>
                    </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Найти сотрудников по введенной ФИО</string>
                   </property>
                   <property name="text">
                    <string>Поиск</string>
@@ -440,6 +517,32 @@
            <string>Панель быстрого доступа</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QPushButton" name="pushButton_15">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="icon">
+              <iconset resource="../../Resources/img.qrc">
+               <normaloff>:/icons/img/reload.png</normaloff>:/icons/img/reload.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QPushButton" name="pushButton_22">
              <property name="minimumSize">
@@ -873,6 +976,32 @@
              <string>Панель быстрого доступа</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QPushButton" name="pushButton_16">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="icon">
+                <iconset resource="../../Resources/img.qrc">
+                 <normaloff>:/icons/img/reload.png</normaloff>:/icons/img/reload.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>25</width>
+                 <height>25</height>
+                </size>
+               </property>
+              </widget>
+             </item>
              <item>
               <widget class="QPushButton" name="pushButton_12">
                <property name="minimumSize">

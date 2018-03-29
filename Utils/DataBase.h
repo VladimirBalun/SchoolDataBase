@@ -1,10 +1,9 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include <iostream>
 #include <QtSql>
 #include <QtSql/QSqlDatabase>
-#include <QCoreApplication>
-#include <QDebug>
 
 class DataBase {
 public:
@@ -16,4 +15,4 @@ private:
     DataBase();
 };
 
-#endif // DATABASE_H
+#endif

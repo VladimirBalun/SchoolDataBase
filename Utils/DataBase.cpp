@@ -2,11 +2,11 @@
 
 DataBase::DataBase() {
     dataBase = QSqlDatabase::addDatabase("QSQLITE");
-    dataBase.setDatabaseName("/home/vova/Desktop/build-SchoolDataBase-Desktop-Release/School.db");
-    if(dataBase.open()) {
-        qDebug() << "Connection with database was successful\n";
+    dataBase.setDatabaseName("/home/vova/Desktop/build-SchoolDataBase-Desktop-Debug/School.db");
+    if (dataBase.open()) {
+        std::cout << "Connection with database was successful" << std::endl;
     } else {
-        qDebug() << "Connection with database wasn't successful\n";
+        std::cerr << "Connection with database wasn't successful" << std::endl;
     }
 }
 

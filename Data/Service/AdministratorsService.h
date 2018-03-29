@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <memory>
-#include <QPair>
-#include "Data/DAO/IAdministratorsDAO.h"
 #include "Data/DAO/AdministratorsDAO.h"
 #include "IAdministratorsService.h"
 

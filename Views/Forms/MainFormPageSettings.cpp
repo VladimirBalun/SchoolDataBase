@@ -12,22 +12,27 @@ MainFormPageSettings::MainFormPageSettings(Ui::MainForm* mainForm) {
     ui->tableAdministrators->resizeColumnsToContents();
     ui->tableAdministrators->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
 
-    reloadInformationInTable();
+    reloadAdministratorsInTable();
+    reloadAdministratorsInCheckBox();
 }
 
-void MainFormPageSettings::reloadInformationInTable() {
+void MainFormPageSettings::reloadAdministratorsInTable() {
     QMap<QString, QString> administrators = administratorsService->getAllAdministrators();
     modelAdministrators->removeRows(0, modelAdministrators->rowCount());
-    ui->cbxAdminsLogin->clear();
-    ui->cbxAdminsLogin->addItem("Не выбрано");
     size_t row = 0;
     for (auto it = administrators.begin(); it != administrators.end(); it++) {
-        QString login = it.key();
-        QString password = it.value();
-        ui->cbxAdminsLogin->addItem(login);
-        modelAdministrators->setItem(row, 0, new QStandardItem(login));
-        modelAdministrators->setItem(row, 1, new QStandardItem(password));
+        modelAdministrators->setItem(row, 0, new QStandardItem(it.key())); //login
+        modelAdministrators->setItem(row, 1, new QStandardItem(it.value())); //password
         row++;
+    }
+}
+
+void MainFormPageSettings::reloadAdministratorsInCheckBox() {
+    QMap<QString, QString> administrators = administratorsService->getAllAdministrators();
+    ui->cbxAdminsLogin->clear();
+    ui->cbxAdminsLogin->addItem("Не выбрано");
+    for (auto it = administrators.begin(); it != administrators.end(); it++) {
+        ui->cbxAdminsLogin->addItem(it.key());
     }
 }
 
@@ -46,7 +51,8 @@ void MainFormPageSettings::addAdministrator() {
           QMessageBox::information(0, "Успешная операция", "Администратор [" + login + "] успешно добавлен.");
           ui->editAdminLogin->setText("");
           ui->editAdminPassword->setText("");
-          reloadInformationInTable();
+          reloadAdministratorsInTable();
+          reloadAdministratorsInCheckBox();
     } else {
           QMessageBox::warning(0, "Неудачная операция", "Администратор [" + login + "] не был добавлен. Возможно такой администратор уже существует.");
     }
@@ -73,7 +79,7 @@ void MainFormPageSettings::changePasswordAdministrator() {
         ui->cbxAdminsLogin->setCurrentIndex(0);
         ui->editAdminOldPassword->setText("");
         ui->editAdminNewPassword->setText("");
-        reloadInformationInTable();
+        reloadAdministratorsInTable();
     } else {
         QMessageBox::warning(0, "Неудачная операция", "Был введен неправильный страый пароль. Изменение пароля невозможно");
     }
@@ -88,7 +94,8 @@ void MainFormPageSettings::removeAdministrator() {
     QMessageBox::StandardButton confirm = QMessageBox::question(0, "Подтверждение", "Действительно хотите удалить сотрудника(ов)?", QMessageBox::Yes|QMessageBox::No);
     if(confirm == QMessageBox::Yes) {
         removeSelectedRows(selectedRows);
-        reloadInformationInTable();
+        reloadAdministratorsInTable();
+        reloadAdministratorsInCheckBox();
     }
 }
 
@@ -108,5 +115,3 @@ void MainFormPageSettings::removeSelectedRows(QModelIndexList selectedRows) {
         }
     }
 }
-
-
