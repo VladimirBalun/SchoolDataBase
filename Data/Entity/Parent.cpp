@@ -39,3 +39,13 @@ QString Parent::getAddress() const {
 QString Parent::getPhoneNumber() const {
     return _phoneNumber;
 }
+
+QString Parent::toString() const {
+    return  "name = " + _name + ", dateBirth = " + _dateBirth + ", address = "  + _address + ", phoneNumber = " + _phoneNumber;
+}
+
+std::ostream& operator << (std::ostream &os, Parent *p) {
+    os << "name = " << p->getName().toStdString() << ", dateBirth = " << p->getDateBirth().toStdString()
+       << ", address = "  << p->getAddress().toStdString() << ", phoneNumber = " << p->getPhoneNumber().toStdString();
+    return os;
+}

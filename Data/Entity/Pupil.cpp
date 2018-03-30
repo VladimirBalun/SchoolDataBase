@@ -39,3 +39,13 @@ QString Pupil::getAddress() const {
 QString Pupil::getNameClass() const {
     return _nameClass;
 }
+
+QString Pupil::toString() const {
+    return "name = " + _name + ", dateBirth = " + _dateBirth + ", address = "  + _address + ", nameClass = " + _nameClass;
+}
+
+std::ostream& operator << (std::ostream &os, Pupil *p) {
+    os << "name = " << p->getName().toStdString() << ", dateBirth = " << p->getDateBirth().toStdString()
+       << ", address = "  << p->getAddress().toStdString() << ", nameClass = " << p->getNameClass().toStdString();
+    return os;
+}

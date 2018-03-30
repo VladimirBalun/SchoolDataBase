@@ -6,8 +6,7 @@
 #include "Data/DAO/IProfessionsDAO.h"
 #include "Exceptions/NotWorkingRequest.h"
 
-struct ProfessionsDAO : public IProfessionsDAO
-{
+struct ProfessionsDAO : public IProfessionsDAO {
     QVector<QString> findAllProfessions() override;
     void addProfession(QString &name) override;
     void removeProfessionByName(QString &name) override;

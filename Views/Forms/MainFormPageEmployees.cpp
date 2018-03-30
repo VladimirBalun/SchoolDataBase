@@ -4,6 +4,7 @@
 MainFormPageEmployees::MainFormPageEmployees(Ui::MainForm* mainForm) {
     ui = mainForm;
     employeesService = std::make_unique<EmployeesService>();
+    professionsService = std::make_unique<ProfessionsService>();
     modelEmployees = std::make_unique<QStandardItemModel>();
 
     QStringList headers = {"ФИО", "Дата рождения", "Адрес", "Профессия", "Номер телефона", "Персональные данные"};
@@ -29,9 +30,8 @@ void MainFormPageEmployees::reloadEmployeesInTable() {
     }
 }
 
-void MainFormPageEmployees::reloadProfessionsInCheckBox()
-{
-    QVector<QString> professions; // needs add service here!!!
+void MainFormPageEmployees::reloadProfessionsInCheckBox() {
+    QVector<QString> professions = professionsService->getAllProfessions();
     ui->cbxProfessions->clear();
     ui->cbxProfessions->addItem("Не выбрано");
     for (auto profession : professions) {
@@ -39,11 +39,21 @@ void MainFormPageEmployees::reloadProfessionsInCheckBox()
     }
 }
 
+void MainFormPageEmployees::reloadEmployees() {
+    reloadEmployeesInTable();
+    reloadProfessionsInCheckBox();
+    QMessageBox::information(0, "Успешная операция", "Сотрудники и их профессии успешно обновлены.");
+}
+
 void MainFormPageEmployees::addEmploye() {
     AddingEmployeDialog addingEmployeDialog;
     if (addingEmployeDialog.exec() == QDialog::Accepted) {
         Employe* employe = addingEmployeDialog.getData();
-        employeesService->addEmploye(employe);
+        if (employeesService->addEmploye(employe)) {
+            QMessageBox::information(0, "Успешная операция", "Сотрудник [" + employe->getName() + "] был успешно добавлен.");
+        } else {
+            QMessageBox::warning(0, "Неуспешная операция", "Видимо уже существует такой сотрудник с таким именем, добавление нового невозможно.");
+        }
     }
 }
 

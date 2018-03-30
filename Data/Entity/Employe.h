@@ -22,12 +22,12 @@ public:
         QString _phoneNumber;
         QString _personalData;
     public:
-        Builder& setName(QString name);
-        Builder& setDateBirth(QString dateBirth);
-        Builder& setAddress(QString address);
-        Builder& setProfession(QString profession);
-        Builder& setPhoneNumber(QString phoneNumber);
-        Builder& setPersonalData(QString personalData);
+        Builder& setName(const QString& name);
+        Builder& setDateBirth(const QString& dateBirth);
+        Builder& setAddress(const QString& address);
+        Builder& setProfession(const QString& profession);
+        Builder& setPhoneNumber(const QString& phoneNumber);
+        Builder& setPersonalData(const QString& personalData);
         Employe* build();
     };
 
@@ -37,6 +37,9 @@ public:
     QString getProfession() const;
     QString getPhoneNumber() const;
     QString getPersonalData() const;
+
+    QString toString() const;
+    friend std::ostream& operator << (std::ostream& os, Employe *employe);
 };
 
 #endif

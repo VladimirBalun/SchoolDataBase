@@ -2,7 +2,6 @@
 #define PUPIL_H
 
 #include <QString>
-#include <memory>
 
 class Pupil {
     QString _name;
@@ -30,6 +29,9 @@ public:
     QString getDateBirth() const;
     QString getAddress() const;
     QString getNameClass() const;
+
+    QString toString() const;
+    friend std::ostream& operator << (std::ostream& os, Pupil *pupil);
 };
 
 #endif

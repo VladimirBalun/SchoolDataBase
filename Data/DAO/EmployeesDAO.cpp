@@ -4,7 +4,7 @@ QVector<Employe*> EmployeesDAO::findAllEmployees() {
     QVector<Employe*> employees;
     QSqlQuery query;
     query.prepare("SELECT e.name, e.date_birth, e.address, e.phone_number, e.personal_data, p.name "
-                  "FROM employes e "
+                  "FROM employees e "
                   "LEFT JOIN professions p ON e.id_profession = p.id");
     query.exec();
     while (query.next()) {
@@ -31,8 +31,7 @@ Employe* EmployeesDAO::findEmployeByName(QString &name) {
 
 void EmployeesDAO::removeEmployeByName(QString &name) {
     QSqlQuery query;
-    query.prepare("DELETE FROM employees "
-                  "WHERE name = :name");
+    query.prepare("DELETE FROM employees WHERE name = :name");
     query.bindValue(":name", name);
     if (!query.exec()) {
         QString exceptionMessage = "Error in deleting an employe[" + name + "]. Query: " + query.lastQuery();
@@ -42,9 +41,9 @@ void EmployeesDAO::removeEmployeByName(QString &name) {
 
 void EmployeesDAO::addEmployee(Employe *employe) {
     QSqlQuery query;
-    query.prepare("INSERT INTO emploeeys(name, date_birth, address, phone_number, personal_data, id_profession) "
+    query.prepare("INSERT INTO employees(name, date_birth, address, phone_number, personal_data, id_profession) "
                   "VALUES(:name_employe, :date_birth, :address, :phone_number, :personal_data, "
-                  "(SELECT p.id FROM professions WHERE p.name = :name_profession)) ");
+                  "(SELECT p.id FROM professions p WHERE p.name = :name_profession)) ");
     query.bindValue(":name_employe", employe->getName());
     query.bindValue(":dte_birth",  employe->getDateBirth());
     query.bindValue(":address",  employe->getAddress());

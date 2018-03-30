@@ -2,7 +2,6 @@
 #define PARENT_H
 
 #include <QString>
-#include <memory>
 
 class Parent {
     QString _name;
@@ -30,6 +29,9 @@ public:
     QString getDateBirth() const;
     QString getAddress() const;
     QString getPhoneNumber() const;
+
+    QString toString() const;
+    friend std::ostream& operator << (std::ostream& os, Parent *parent);
 };
 
-#endif // PARENT_H
+#endif

@@ -7,6 +7,7 @@ MainForm::MainForm(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainForm) 
     mainFormPageEmployees = std::make_unique<MainFormPageEmployees>(ui);
     mainFormPageSettings = std::make_unique<MainFormPageSettings>(ui);
 
+    connect(ui->btnReloadEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnReloadEmployees()));
     connect(ui->btnAddEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddEmploye()));
     connect(ui->btnRemoveEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveAdmin()));
     connect(ui->btnSortEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSortEmployees()));
@@ -19,6 +20,10 @@ MainForm::MainForm(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainForm) 
 }
 
 //Page employees
+void MainForm::clickedBtnReloadEmployees(){
+    mainFormPageEmployees->reloadEmployees();
+}
+
 void MainForm::clickedBtnAddEmploye() {
     mainFormPageEmployees->addEmploye();
 }

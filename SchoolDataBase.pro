@@ -26,7 +26,9 @@ SOURCES += \
     Data/DAO/ProfessionsDAO.cpp \
     Data/DAO/PredmetsDAO.cpp \
     Views/Forms/MainFormPageEmployees.cpp \
-    Views/Dialogs/AddingEmployeDialog.cpp
+    Views/Dialogs/AddingEmployeDialog.cpp \
+    Data/Service/ProfessionsService.cpp \
+    Utils/Logger.cpp
 
 HEADERS += \
     Exceptions/NotWorkingRequest.h \
@@ -55,7 +57,11 @@ HEADERS += \
     Data/DAO/IPredmetsDAO.h \
     Data/DAO/PredmetsDAO.h \
     Views/Forms/MainFormPageEmployees.h \
-    Views/Dialogs/AddingEmployeDialog.h
+    Views/Dialogs/AddingEmployeDialog.h \
+    Data/Service/ProfessionsService.h \
+    Data/Service/IProfessionsService.h \
+    Data/DAO/ESortingMethod.h \
+    Utils/Logger.h
 
 FORMS += \
     Views/Forms/LogInForm.ui \

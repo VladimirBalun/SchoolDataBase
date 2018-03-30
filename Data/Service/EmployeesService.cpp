@@ -11,9 +11,10 @@ QVector<Employe*> EmployeesService::getAllEmployees() {
 bool EmployeesService::addEmploye(Employe *employe) {
     try {
         emploeesDAO->addEmployee(employe);
+        log.debug(__FILE__, "Employe [" + employe->toString() + "] was added.");
         return true;
     } catch(NotWorkingRequest& e) {
-        std::cerr << e.what().toStdString() << std::endl;
+        log.warning(__FILE__, e.what());
         return false;
     }
 }
@@ -21,9 +22,10 @@ bool EmployeesService::addEmploye(Employe *employe) {
 bool EmployeesService::removeEmployeByName(QString &name) {
     try {
         emploeesDAO->removeEmployeByName(name);
+        log.debug(__FILE__, "Employe [" + name + "] was deleted.");
         return true;
     } catch(NotWorkingRequest& e) {
-        std::cerr << e.what().toStdString() << std::endl;
+        log.warning(__FILE__, e.what());
         return false;
     }
 }

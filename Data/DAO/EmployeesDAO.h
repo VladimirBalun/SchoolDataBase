@@ -7,8 +7,7 @@
 #include "Exceptions/NotWorkingRequest.h"
 #include "Exceptions/EmployeNotFound.h"
 
-struct EmployeesDAO : public IEmployeesDAO
-{
+struct EmployeesDAO : public IEmployeesDAO {
     QVector<Employe*> findAllEmployees() override;
     QVector<Employe*> findEmployeByProfession(QString &profession) override;
     Employe* findEmployeByName(QString &name) override;

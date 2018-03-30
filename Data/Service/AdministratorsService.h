@@ -1,12 +1,13 @@
 #ifndef ADMINISTRATORSSERVICE_H
 #define ADMINISTRATORSSERVICE_H
 
-#include <iostream>
 #include <memory>
-#include "Data/DAO/AdministratorsDAO.h"
+#include "Utils/Logger.h"
 #include "IAdministratorsService.h"
+#include "Data/DAO/AdministratorsDAO.h"
 
 class AdministratorsService : public IAdministratorsService {
+    Logger log;
     std::unique_ptr<IAdministratorsDAO> administratorsDAO;
 public:
     AdministratorsService();

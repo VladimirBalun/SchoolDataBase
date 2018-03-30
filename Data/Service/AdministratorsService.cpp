@@ -7,9 +7,10 @@ AdministratorsService::AdministratorsService() {
 bool AdministratorsService::addAdministrator(QString &login, QString &password) {
     try {
         administratorsDAO->addAdministrator(login, password);
+        log.debug(__FILE__, "Administrator [" + login + "] was added.");
         return true;
     } catch(NotWorkingRequest& e) {
-        std::cerr << e.what().toStdString() << std::endl;
+        log.warning(__FILE__, e.what());
         return false;
     }
 }
@@ -17,9 +18,10 @@ bool AdministratorsService::addAdministrator(QString &login, QString &password) 
 bool AdministratorsService::removeAdministratorByLogin(QString &login) {
     try {
         administratorsDAO->removeAdministratorByLogin(login);
+        log.debug(__FILE__, "Administrator [" + login + "] was deleted.");
         return true;
     } catch(NotWorkingRequest& e) {
-        std::cerr << e.what().toStdString() << std::endl;
+        log.warning(__FILE__, e.what());
         return false;
     }
 }
@@ -31,9 +33,10 @@ bool AdministratorsService::changePasswordAdministratoByLogin(QString &login, QS
     }
     try {
         administratorsDAO->changePasswordAdministratorByLogin(login, oldPassword, newPassword);
+        log.debug(__FILE__, "Password of administrator [" + login + "] was changed.");
         return true;
     } catch(NotWorkingRequest& e) {
-        std::cerr << e.what().toStdString() << std::endl;
+        log.warning(__FILE__, e.what());
         return false;
     }
 }
@@ -43,7 +46,7 @@ bool AdministratorsService::isExistAdministrator(QString &login, QString &passwo
     try {
         admin = administratorsDAO->findAdministratorByLogin(login);
     } catch(AdministratorNotFound& e) {
-        std::cerr << e.what().toStdString() << std::endl;
+        log.warning(__FILE__, e.what());
         return false;
     }
     if(admin.first == login && admin.second == password) {

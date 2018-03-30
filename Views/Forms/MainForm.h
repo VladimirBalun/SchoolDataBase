@@ -17,6 +17,7 @@ public:
     explicit MainForm(QWidget *parent = 0);
     ~MainForm();
 private slots:
+    void clickedBtnReloadEmployees();
     void clickedBtnAddEmploye();
     void clickedBtnRemoveEmploye();
     void clickedBtnSortEmployees();

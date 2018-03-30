@@ -41,7 +41,7 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="btnReloadEmployees">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -337,6 +337,26 @@
                     <height>30</height>
                    </size>
                   </property>
+                  <item>
+                   <property name="text">
+                    <string>Не выбрано</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>По ФИО</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>По адресу</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>По дате рождения</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                 <item>

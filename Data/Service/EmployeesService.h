@@ -2,11 +2,12 @@
 #define EMPLOYEESSERVICE_H
 
 #include <memory>
-#include <iostream>
-#include "Data/Service/IEmployeesService.h"
+#include "Utils/Logger.h"
 #include "Data/DAO/EmployeesDAO.h"
+#include "Data/Service/IEmployeesService.h"
 
 class EmployeesService : public IEmployeesService {
+    Logger log;
     std::unique_ptr<IEmployeesDAO> emploeesDAO;
 public:
     EmployeesService();

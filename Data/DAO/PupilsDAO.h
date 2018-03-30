@@ -3,7 +3,7 @@
 
 #include "IPupilsDAO.h"
 
-struct PupilsDAO : IPupilsDAO{
+struct PupilsDAO : public IPupilsDAO {
     void findPupilsByClass(QString& nameClass) override;
     void findAllPupils() override;
     void addPupil() override;
