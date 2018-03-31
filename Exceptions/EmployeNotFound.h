@@ -6,7 +6,7 @@
 class EmployeNotFound {
     QString _message;
 public:
-    EmployeNotFound(QString& message) : _message(message) {}
+    EmployeNotFound(const QString& message) : _message(message) {}
     QString what() const { return "Employe not found. Exception: " + _message; }
 };
 

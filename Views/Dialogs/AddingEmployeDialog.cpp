@@ -16,8 +16,8 @@ AddingEmployeDialog::AddingEmployeDialog(QWidget *parent) : QDialog(parent), ui(
     }
 }
 
-Employe* AddingEmployeDialog::getData() {
-    Employe* employe = Employe::Builder()
+QSharedPointer<Employe> AddingEmployeDialog::getData() {
+    QSharedPointer<Employe> employe = Employe::Builder()
             .setName(ui->editName->text())
             .setDateBirth(ui->editDateBirth->text())
             .setAddress(ui->editAddress->text())

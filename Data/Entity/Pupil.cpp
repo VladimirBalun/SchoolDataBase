@@ -20,8 +20,9 @@ Pupil::Builder &Pupil::Builder::setNameClass(QString& nameClass) {
     return *this;
 }
 
-Pupil* Pupil::Builder::build() {
-    return new Pupil(_name, _dateBirth, _address, _nameClass);
+QSharedPointer<Pupil> Pupil::Builder::build() {
+    QSharedPointer<Pupil> pupil(new Pupil(_name, _dateBirth, _address, _nameClass));
+    return pupil;
 }
 
 QString Pupil::getName() const {

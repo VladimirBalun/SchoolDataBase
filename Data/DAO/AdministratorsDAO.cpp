@@ -1,6 +1,6 @@
 #include "AdministratorsDAO.h"
 
-QPair<QString, QString> AdministratorsDAO::findAdministratorByLogin(QString& login) {
+QPair<QString, QString> AdministratorsDAO::findAdministratorByLogin(const QString &login) {
     QSqlQuery query;
     query.prepare("SELECT login, password "
                   "FROM administrators "
@@ -31,7 +31,7 @@ QMap<QString, QString> AdministratorsDAO::findAllAdministrators() {
     return administrators;
 }
 
-void AdministratorsDAO::addAdministrator(QString& login, QString& password) {
+void AdministratorsDAO::addAdministrator(const QString &login, const QString &password) {
     QSqlQuery query;
     query.prepare("INSERT INTO administrators(login, password) VALUES(:login, :password)");
     query.bindValue(":login", login);
@@ -42,7 +42,7 @@ void AdministratorsDAO::addAdministrator(QString& login, QString& password) {
     }
 }
 
-void AdministratorsDAO::removeAdministratorByLogin(QString& login) {
+void AdministratorsDAO::removeAdministratorByLogin(const QString &login) {
     QSqlQuery query;
     query.prepare("DELETE FROM administrators WHERE login = :login");
     query.bindValue(":login", login);
@@ -52,7 +52,7 @@ void AdministratorsDAO::removeAdministratorByLogin(QString& login) {
     }
 }
 
-void AdministratorsDAO::changePasswordAdministratorByLogin(QString& login, QString &oldPassword, QString &newPassword) {
+void AdministratorsDAO::changePasswordAdministratorByLogin(const QString &login, const QString &oldPassword, const QString &newPassword) {
     QSqlQuery query;
     query.prepare("UPDATE administrators "
                   "SET password = :newPassword "
@@ -66,7 +66,7 @@ void AdministratorsDAO::changePasswordAdministratorByLogin(QString& login, QStri
     }
 }
 
-QString AdministratorsDAO::hashPassword(QString &password) {
+QString AdministratorsDAO::hashPassword(const QString &password) {
     QByteArray arrayForHash = password.toUtf8();
     QString hashPassword = QString(QCryptographicHash::hash(arrayForHash, QCryptographicHash::Sha256).toHex());
     return hashPassword;

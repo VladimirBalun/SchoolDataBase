@@ -2,6 +2,7 @@
 #define PARENT_H
 
 #include <QString>
+#include <QSharedPointer>
 
 class Parent {
     QString _name;
@@ -22,7 +23,7 @@ public:
         Builder& setDateBirth(QString& dateBirth);
         Builder& setAddress(QString& address);
         Builder& setPhoneNumber(QString& phoneNumber);
-        Parent* build();
+        QSharedPointer<Parent> build();
     };
 
     QString getName() const;

@@ -1,18 +1,17 @@
 #include "LoginForm.h"
 #include "ui_LogInForm.h"
 
-LoginForm::LoginForm(QWidget *parent) : QMainWindow(parent), ui(new Ui::LoginForm) {
-    ui->setupUi(this);
-    administratorsService = new AdministratorsService;
-    connect(ui->btnLogin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnLogin()));
-    connect(ui->cbxShowPassword, SIGNAL(clicked(bool)), this, SLOT(clickedCbxShowPassword()));
+LoginForm::LoginForm(QWidget* parent) : QMainWindow(parent), _ui(new Ui::LoginForm), _administratorsService(new AdministratorsService) {
+    _ui->setupUi(this);
+    connect(_ui->btnLogin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnLogin()));
+    connect(_ui->cbxShowPassword, SIGNAL(clicked(bool)), this, SLOT(clickedCbxShowPassword()));
 }
 
 void LoginForm::clickedBtnLogin() {
-    QString login = ui->editLogin->text();
-    QString password = ui->editPassword->text();
+    QString login = _ui->editLogin->text();
+    QString password = _ui->editPassword->text();
     if(isValidForm()) {
-        if(administratorsService->isExistAdministrator(login, password)) {
+        if(_administratorsService->isExistAdministrator(login, password)) {
             MainForm* mainForm = new MainForm;
             mainForm->show();
             this->close();
@@ -23,11 +22,11 @@ void LoginForm::clickedBtnLogin() {
 }
 
 bool LoginForm::isValidForm() {
-    if(ui->editLogin->text().isEmpty()) {
+    if(_ui->editLogin->text().isEmpty()) {
         QMessageBox::critical(this, "Ошибка авторизации", "Не введене логин, авторизация невозможна.");
         return false;
     }
-    if(ui->editPassword->text().isEmpty()) {
+    if(_ui->editPassword->text().isEmpty()) {
         QMessageBox::critical(this, "Ошибка авторизации", "Не введене пароль, авторизация невозможна.");
         return false;
     }
@@ -36,14 +35,13 @@ bool LoginForm::isValidForm() {
 
 
 void LoginForm::clickedCbxShowPassword() {
-    if(ui->cbxShowPassword->isChecked()) {
-        ui->editPassword->setEchoMode(QLineEdit::Normal);
+    if(_ui->cbxShowPassword->isChecked()) {
+        _ui->editPassword->setEchoMode(QLineEdit::Normal);
     } else {
-        ui->editPassword->setEchoMode(QLineEdit::Password);
+        _ui->editPassword->setEchoMode(QLineEdit::Password);
     }
 }
 
 LoginForm::~LoginForm() {
-    delete administratorsService;
-    delete ui;
+    delete _ui;
 }

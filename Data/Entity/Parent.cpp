@@ -20,8 +20,9 @@ Parent::Builder &Parent::Builder::setPhoneNumber(QString &phoneNumber) {
     return *this;
 }
 
-Parent* Parent::Builder::build() {
-    return new Parent(_name, _dateBirth, _address, _phoneNumber);
+QSharedPointer<Parent> Parent::Builder::build() {
+    QSharedPointer<Parent> parent(new Parent(_name, _dateBirth, _address, _phoneNumber));
+    return parent;
 }
 
 QString Parent::getName() const {

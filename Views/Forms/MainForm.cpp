@@ -1,64 +1,64 @@
 #include "MainForm.h"
 #include "ui_MainForm.h"
 
-MainForm::MainForm(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainForm) {
-    ui->setupUi(this);
+MainForm::MainForm(QWidget* parent) : QMainWindow(parent), _ui(new Ui::MainForm) {
+    _ui->setupUi(this);
 
-    mainFormPageEmployees = std::make_unique<MainFormPageEmployees>(ui);
-    mainFormPageSettings = std::make_unique<MainFormPageSettings>(ui);
+    _mainFormPageEmployees = std::make_unique<MainFormPageEmployees>(_ui);
+    _mainFormPageSettings = std::make_unique<MainFormPageSettings>(_ui);
 
-    connect(ui->btnReloadEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnReloadEmployees()));
-    connect(ui->btnAddEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddEmploye()));
-    connect(ui->btnRemoveEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveAdmin()));
-    connect(ui->btnSortEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSortEmployees()));
-    connect(ui->btnSelectEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSelectEmployees()));
-    connect(ui->btnSearchEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSearchEmployees()));
+    connect(_ui->btnReloadEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnReloadEmployees()));
+    connect(_ui->btnAddEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddEmploye()));
+    connect(_ui->btnRemoveEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveAdmin()));
+    connect(_ui->btnSortEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSortEmployees()));
+    connect(_ui->btnSelectEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSelectEmployees()));
+    connect(_ui->btnSearchEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSearchEmployees()));
 
-    connect(ui->btnAddAdmin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddAdmin()));
-    connect(ui->btnChangeAdminPassword, SIGNAL(clicked(bool)), this, SLOT(clickedBtnChangeAdminPassword()));
-    connect(ui->btnRemoveAdmin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveAdmin()));
+    connect(_ui->btnAddAdmin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddAdmin()));
+    connect(_ui->btnChangeAdminPassword, SIGNAL(clicked(bool)), this, SLOT(clickedBtnChangeAdminPassword()));
+    connect(_ui->btnRemoveAdmin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveAdmin()));
 }
 
 //Page employees
 void MainForm::clickedBtnReloadEmployees(){
-    mainFormPageEmployees->reloadEmployees();
+    _mainFormPageEmployees->reloadEmployees();
 }
 
 void MainForm::clickedBtnAddEmploye() {
-    mainFormPageEmployees->addEmploye();
+    _mainFormPageEmployees->addEmploye();
 }
 
 void MainForm::clickedBtnRemoveEmploye() {
-    mainFormPageEmployees->removeEmploye();
+    _mainFormPageEmployees->removeEmploye();
 }
 
 void MainForm::clickedBtnSortEmployees() {
-    mainFormPageEmployees->sortEmployees();
+    _mainFormPageEmployees->sortEmployees();
 }
 
 void MainForm::clickedBtnSelectEmployees() {
-    mainFormPageEmployees->selectEmployees();
+    _mainFormPageEmployees->selectEmployees();
 }
 
 void MainForm::clickedBtnSearchEmployees() {
-    mainFormPageEmployees->searchEmployees();
+    _mainFormPageEmployees->searchEmployees();
 }
 
 //Page settings
 void MainForm::clickedBtnAddAdmin() {
-    mainFormPageSettings->addAdministrator();
+    _mainFormPageSettings->addAdministrator();
 }
 
 void MainForm::clickedBtnChangeAdminPassword() {
-    mainFormPageSettings->changePasswordAdministrator();
+    _mainFormPageSettings->changePasswordAdministrator();
 }
 
 void MainForm::clickedBtnRemoveAdmin() {
-    mainFormPageSettings->removeAdministrator();
+    _mainFormPageSettings->removeAdministrator();
 }
 
 MainForm::~MainForm() {
-    delete ui;
+    delete _ui;
 }
 
 

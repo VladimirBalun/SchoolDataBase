@@ -1,7 +1,7 @@
 #ifndef MAINFORMSETTINGS_H
 #define MAINFORMSETTINGS_H
 
-#include <memory>
+#include <QScopedPointer>
 #include <QMessageBox>
 #include <QStandardItem>
 #include <QStandardItemModel>
@@ -12,18 +12,20 @@ class MainForm;
 }
 
 class MainFormPageSettings {
-    Ui::MainForm* ui;
-    std::unique_ptr<IAdministratorsService> administratorsService;
-    std::unique_ptr<QStandardItemModel> modelAdministrators;
-    void reloadAdministratorsInTable();
-    void reloadAdministratorsInCheckBox();
-    void removeSelectedRows(QModelIndexList selectedRows);
-    QModelIndexList getSelectedRows();
 public:
     MainFormPageSettings(Ui::MainForm* mainForm);
     void addAdministrator();
     void changePasswordAdministrator();
     void removeAdministrator();
+private:
+    void reloadAdministratorsInTable();
+    void reloadAdministratorsInCheckBox();
+    void removeSelectedRows(QModelIndexList selectedRows);
+    QModelIndexList getSelectedRows();
+private:
+    Ui::MainForm* _ui;
+    QScopedPointer<IAdministratorsService> _administratorsService;
+    QScopedPointer<QStandardItemModel> _modelAdministrators;
 };
 
 #endif

@@ -6,12 +6,12 @@
 #include <QMap>
 
 struct IAdministratorsDAO {
-    virtual QPair<QString, QString> findAdministratorByLogin(QString& login) = 0;
+    virtual QPair<QString, QString> findAdministratorByLogin(const QString& login) = 0;
     virtual QMap<QString, QString> findAllAdministrators() = 0;
-    virtual void addAdministrator(QString& login, QString& password) = 0;
-    virtual void removeAdministratorByLogin(QString& login) = 0;
-    virtual void changePasswordAdministratorByLogin(QString& login, QString& oldPassword, QString& newPassword) = 0;
-    virtual QString hashPassword(QString& password) = 0;
+    virtual void addAdministrator(const QString& login, const QString& password) = 0;
+    virtual void removeAdministratorByLogin(const QString& login) = 0;
+    virtual void changePasswordAdministratorByLogin(const QString& login, const QString& oldPassword, const QString& newPassword) = 0;
+    virtual QString hashPassword(const QString& password) = 0;
     virtual ~IAdministratorsDAO() {}
 };
 

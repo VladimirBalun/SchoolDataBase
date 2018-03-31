@@ -6,9 +6,9 @@
 
 struct IPredmetsDAO {
     virtual QVector<QString> findAllPredmets() = 0;
-    virtual void addPredmet(QString& name) = 0;
-    virtual void removePredmetByName(QString& name) = 0;
-    virtual void changeNamePredmet(QString& oldName, QString& newName) = 0;
+    virtual void addPredmet(const QString& name) = 0;
+    virtual void removePredmetByName(const QString& name) = 0;
+    virtual void changeNamePredmet(const QString& oldName, const QString& newName) = 0;
     virtual ~IPredmetsDAO() {}
 };
 

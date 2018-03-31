@@ -6,7 +6,7 @@
 class NotWorkingRequest {
     QString _message;
 public:
-    NotWorkingRequest(QString message) : _message(message) {}
+    NotWorkingRequest(const QString& message) : _message(message) {}
     QString what() const { return "Not working request. Exception: " + _message; }
 };
 

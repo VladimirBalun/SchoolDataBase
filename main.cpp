@@ -3,9 +3,10 @@
 #include "Utils/DataBase.h"
 
 int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
     DataBase* database = DataBase::getInstance();
+    database->connect();
     MainForm mainForm;
     mainForm.show();
-    return a.exec();
+    return app.exec();
 }

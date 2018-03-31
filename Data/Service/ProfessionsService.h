@@ -1,17 +1,17 @@
 #ifndef PROFESSIONSSERVICE_H
 #define PROFESSIONSSERVICE_H
 
-#include <memory>
+#include <QScopedPointer>
 #include "IProfessionsService.h"
 #include "Data/DAO/ProfessionsDAO.h"
 #include "Utils/Logger.h"
 #include "Exceptions/NotWorkingRequest.h"
 
 class ProfessionsService : public IProfessionsService {
-    std::unique_ptr<IProfessionsDAO> professionsDAO;
+    Logger _log;
+    QScopedPointer<IProfessionsDAO> _professionsDAO;
 public:
-    Logger log;
-    ProfessionsService();
+    ProfessionsService() : _professionsDAO(new ProfessionsDAO) {}
     QVector<QString> getAllProfessions() override;
     bool addProfession(QString &name) override;
     bool removeProfessionByName(QString &name) override;

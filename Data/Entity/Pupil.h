@@ -2,6 +2,7 @@
 #define PUPIL_H
 
 #include <QString>
+#include <QSharedPointer>
 
 class Pupil {
     QString _name;
@@ -22,7 +23,7 @@ public:
         Builder& setDateBirth(QString& dateBirth);
         Builder& setAddress(QString& address);
         Builder& setNameClass(QString& nameClass);
-        Pupil* build();
+        QSharedPointer<Pupil> build();
     };
 
     QString getName() const;

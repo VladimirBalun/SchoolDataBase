@@ -14,7 +14,7 @@ class MainForm;
 class MainForm : public QMainWindow {
     Q_OBJECT
 public:
-    explicit MainForm(QWidget *parent = 0);
+    explicit MainForm(QWidget* parent = 0);
     ~MainForm();
 private slots:
     void clickedBtnReloadEmployees();
@@ -28,9 +28,9 @@ private slots:
     void clickedBtnChangeAdminPassword();
     void clickedBtnRemoveAdmin();
 private:
-    Ui::MainForm *ui;
-    std::unique_ptr<MainFormPageEmployees> mainFormPageEmployees;
-    std::unique_ptr<MainFormPageSettings> mainFormPageSettings;
+    Ui::MainForm* _ui;
+    std::unique_ptr<MainFormPageEmployees> _mainFormPageEmployees;
+    std::unique_ptr<MainFormPageSettings> _mainFormPageSettings;
 };
 
 #endif

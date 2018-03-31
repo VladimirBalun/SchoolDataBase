@@ -1,20 +1,19 @@
 #ifndef EMPLOYEESSERVICE_H
 #define EMPLOYEESSERVICE_H
 
-#include <memory>
+#include <QScopedPointer>
 #include "Utils/Logger.h"
 #include "Data/DAO/EmployeesDAO.h"
 #include "Data/Service/IEmployeesService.h"
 
 class EmployeesService : public IEmployeesService {
-    Logger log;
-    std::unique_ptr<IEmployeesDAO> emploeesDAO;
+    Logger _log;
+    QScopedPointer<IEmployeesDAO> _emploeesDAO;
 public:
-    EmployeesService();
-    QVector<Employe *> getAllEmployees();
-    bool addEmploye(Employe *employe);
-    bool removeEmployeByName(QString &name);
-    ~EmployeesService() {}
+    EmployeesService() : _emploeesDAO(new EmployeesDAO) {}
+    QVector<QSharedPointer<Employe>> getAllEmployees();
+    bool addEmploye(const QSharedPointer<Employe>& employe);
+    bool removeEmployeByName(const QString &name);
 };
 
 #endif

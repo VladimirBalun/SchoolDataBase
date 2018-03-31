@@ -8,11 +8,11 @@
 #include "Exceptions/EmployeNotFound.h"
 
 struct EmployeesDAO : public IEmployeesDAO {
-    QVector<Employe*> findAllEmployees() override;
-    QVector<Employe*> findEmployeByProfession(QString &profession) override;
-    Employe* findEmployeByName(QString &name) override;
-    void removeEmployeByName(QString &name) override;
-    void addEmployee(Employe* employe) override;
+    QVector<QSharedPointer<Employe>> findAllEmployees() override;
+    QVector<QSharedPointer<Employe>> findEmployeByProfession(const QString& profession) override;
+    QSharedPointer<Employe> findEmployeByName(const QString& name) override;
+    void removeEmployeByName(const QString& name) override;
+    void addEmployee(const QSharedPointer<Employe>& employe) override;
 };
 
 #endif

@@ -8,12 +8,11 @@
 class DataBase {
 public:
     static DataBase* getInstance();
-    QSqlQuery execSelect(QString& strQuery);
-    ~DataBase() {}
+    void connect();
 private:
-    QSqlDatabase dataBase;
-    Logger log;
-    DataBase();
+    QSqlDatabase _dataBase;
+    Logger _log;
+    DataBase() {}
 };
 
 #endif

@@ -2,8 +2,8 @@
 #define LOGIN_FORM_H
 
 #include <QMainWindow>
+#include <QScopedPointer>
 #include <QMessageBox>
-#include <QDebug>
 #include "MainForm.h"
 #include "Data/Service/IAdministratorsService.h"
 #include "Data/Service/AdministratorsService.h"
@@ -15,15 +15,15 @@ class LoginForm;
 class LoginForm : public QMainWindow {
     Q_OBJECT
 public:
-    explicit LoginForm(QWidget *parent = 0);
+    explicit LoginForm(QWidget* parent = 0);
     ~LoginForm();
-private:
-    Ui::LoginForm *ui;
-    IAdministratorsService* administratorsService;
-    bool isValidForm();
 private slots:
     void clickedBtnLogin();
     void clickedCbxShowPassword();
+private:
+    Ui::LoginForm* _ui;
+    QScopedPointer<IAdministratorsService> _administratorsService;
+    bool isValidForm();
 };
 
 #endif

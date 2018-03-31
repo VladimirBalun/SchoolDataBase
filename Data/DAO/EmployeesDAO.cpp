@@ -1,14 +1,14 @@
 #include "EmployeesDAO.h"
 
-QVector<Employe*> EmployeesDAO::findAllEmployees() {
-    QVector<Employe*> employees;
+QVector<QSharedPointer<Employe>> EmployeesDAO::findAllEmployees() {
+    QVector<QSharedPointer<Employe>> employees;
     QSqlQuery query;
     query.prepare("SELECT e.name, e.date_birth, e.address, e.phone_number, e.personal_data, p.name "
                   "FROM employees e "
                   "LEFT JOIN professions p ON e.id_profession = p.id");
     query.exec();
     while (query.next()) {
-        Employe* employe = Employe::Builder()
+        QSharedPointer<Employe> employe = Employe::Builder()
                 .setName(QString(query.value(0).toString()))
                 .setDateBirth(QString(query.value(1).toString()))
                 .setAddress(QString(query.value(2).toString()))
@@ -21,15 +21,15 @@ QVector<Employe*> EmployeesDAO::findAllEmployees() {
     return employees;
 }
 
-QVector<Employe*> EmployeesDAO::findEmployeByProfession(QString &profession) {
+QVector<QSharedPointer<Employe>> EmployeesDAO::findEmployeByProfession(const QString& profession) {
 
 }
 
-Employe* EmployeesDAO::findEmployeByName(QString &name) {
+QSharedPointer<Employe> EmployeesDAO::findEmployeByName(const QString& name) {
 
 }
 
-void EmployeesDAO::removeEmployeByName(QString &name) {
+void EmployeesDAO::removeEmployeByName(const QString& name) {
     QSqlQuery query;
     query.prepare("DELETE FROM employees WHERE name = :name");
     query.bindValue(":name", name);
@@ -39,7 +39,7 @@ void EmployeesDAO::removeEmployeByName(QString &name) {
     }
 }
 
-void EmployeesDAO::addEmployee(Employe *employe) {
+void EmployeesDAO::addEmployee(const QSharedPointer<Employe>& employe) {
     QSqlQuery query;
     query.prepare("INSERT INTO employees(name, date_birth, address, phone_number, personal_data, id_profession) "
                   "VALUES(:name_employe, :date_birth, :address, :phone_number, :personal_data, "

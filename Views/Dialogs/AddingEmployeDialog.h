@@ -6,6 +6,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QSharedPointer>
 #include "Data/Entity/Employe.h"
 #include "Data/Service/ProfessionsService.h"
 
@@ -18,7 +19,7 @@ class AddingEmployeDialog : public QDialog
     Q_OBJECT
 public:
     explicit AddingEmployeDialog(QWidget *parent = 0);
-    Employe* getData();
+    QSharedPointer<Employe> getData();
     ~AddingEmployeDialog();
 private:
     Ui::AddingEmployeDialog *ui;

@@ -1,9 +1,9 @@
 #ifndef MAINFORMPAGEEMPLOYEES_H
 #define MAINFORMPAGEEMPLOYEES_H
 
-#include <memory>
-#include <iostream>
 #include <QMessageBox>
+#include <QScopedPointer>
+#include <QSharedPointer>
 #include <QStandardItem>
 #include <QStandardItemModel>
 #include "Views/Dialogs/AddingEmployeDialog.h"
@@ -15,12 +15,6 @@ class MainForm;
 }
 
 class MainFormPageEmployees {
-    Ui::MainForm* ui;
-    std::unique_ptr<IEmployeesService> employeesService;
-    std::unique_ptr<IProfessionsService> professionsService;
-    std::unique_ptr<QStandardItemModel> modelEmployees;
-    void reloadEmployeesInTable();
-    void reloadProfessionsInCheckBox();
 public:
     MainFormPageEmployees(Ui::MainForm* mainForm);
     void reloadEmployees();
@@ -29,6 +23,14 @@ public:
     void sortEmployees();
     void selectEmployees();
     void searchEmployees();
+private:
+    void reloadEmployeesInTable();
+    void reloadProfessionsInCheckBox();
+private:
+    Ui::MainForm* _ui;
+    QScopedPointer<IEmployeesService> _employeesService;
+    QScopedPointer<IProfessionsService> _professionsService;
+    QScopedPointer<QStandardItemModel> _modelEmployees;
 };
 
 #endif

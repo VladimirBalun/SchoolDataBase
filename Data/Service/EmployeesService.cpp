@@ -1,31 +1,27 @@
 #include "EmployeesService.h"
 
-EmployeesService::EmployeesService() {
-    emploeesDAO = std::make_unique<EmployeesDAO>();
+QVector<QSharedPointer<Employe>> EmployeesService::getAllEmployees() {
+    return _emploeesDAO->findAllEmployees();
 }
 
-QVector<Employe*> EmployeesService::getAllEmployees() {
-    return emploeesDAO->findAllEmployees();
-}
-
-bool EmployeesService::addEmploye(Employe *employe) {
+bool EmployeesService::addEmploye(const QSharedPointer<Employe>& employe) {
     try {
-        emploeesDAO->addEmployee(employe);
-        log.debug(__FILE__, "Employe [" + employe->toString() + "] was added.");
+        _emploeesDAO->addEmployee(employe);
+        _log.debug(__FILE__, "Employe [" + employe->toString() + "] was added.");
         return true;
     } catch(NotWorkingRequest& e) {
-        log.warning(__FILE__, e.what());
+        _log.warning(__FILE__, e.what());
         return false;
     }
 }
 
-bool EmployeesService::removeEmployeByName(QString &name) {
+bool EmployeesService::removeEmployeByName(const QString& name) {
     try {
-        emploeesDAO->removeEmployeByName(name);
-        log.debug(__FILE__, "Employe [" + name + "] was deleted.");
+        _emploeesDAO->removeEmployeByName(name);
+        _log.debug(__FILE__, "Employe [" + name + "] was deleted.");
         return true;
     } catch(NotWorkingRequest& e) {
-        log.warning(__FILE__, e.what());
+        _log.warning(__FILE__, e.what());
         return false;
     }
 }

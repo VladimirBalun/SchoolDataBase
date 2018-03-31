@@ -54,8 +54,9 @@ Employe::Builder& Employe::Builder::setPersonalData(const QString& personalData)
     return *this;
 }
 
-Employe* Employe::Builder::build() {
-    return new Employe(_name, _dateBirth, _address, _profession, _phoneNumber, _personalData);
+QSharedPointer<Employe> Employe::Builder::build() {
+    QSharedPointer<Employe> employePtr(new Employe(_name, _dateBirth, _address, _profession, _phoneNumber, _personalData));
+    return employePtr;
 }
 
 QString Employe::toString() const {
