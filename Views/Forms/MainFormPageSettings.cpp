@@ -85,12 +85,12 @@ void MainFormPageSettings::changePasswordAdministrator() {
 }
 
 void MainFormPageSettings::removeAdministrator() {
-    QModelIndexList selectedRows = getSelectedRows();
+    QModelIndexList selectedRows = getSelectedRows(_ui->tableAdministrators);
     if(selectedRows.isEmpty()) {
         QMessageBox::warning(0, "Ошибка удаления", "Не выбран(ы) администратор(ы) в таблице.");
         return;
     }
-    QMessageBox::StandardButton confirm = QMessageBox::question(0, "Подтверждение", "Действительно хотите удалить сотрудника(ов)?", QMessageBox::Yes|QMessageBox::No);
+    QMessageBox::StandardButton confirm = QMessageBox::question(0, "Подтверждение", "Действительно хотите удалить администратора(ов)?", QMessageBox::Yes|QMessageBox::No);
     if(confirm == QMessageBox::Yes) {
         removeSelectedRows(selectedRows);
         reloadAdministratorsInTable();
@@ -98,17 +98,11 @@ void MainFormPageSettings::removeAdministrator() {
     }
 }
 
-QModelIndexList MainFormPageSettings::getSelectedRows() {
-    QAbstractItemView* view = _ui->tableAdministrators;
-    QItemSelectionModel* selectedModel = view->selectionModel();
-    return selectedModel->selectedRows();
-}
-
 void MainFormPageSettings::removeSelectedRows(QModelIndexList selectedRows) {
     for (auto row : selectedRows) {
         QString login = row.data().toString();
         if(_administratorsService->removeAdministratorByLogin(login)) {
-            QMessageBox::information(0, "Успешная операция", "Администратора[" + login + "] успешно удален.");
+            QMessageBox::information(0, "Успешная операция", "Администратор [" + login + "] успешно удален.");
         } else {
             QMessageBox::warning(0, "Неудачная операция", "Такого администратора не существует.");
         }

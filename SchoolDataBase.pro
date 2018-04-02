@@ -28,7 +28,10 @@ SOURCES += \
     Views/Forms/MainFormPageEmployees.cpp \
     Views/Dialogs/AddingEmployeDialog.cpp \
     Data/Service/ProfessionsService.cpp \
-    Utils/Logger.cpp
+    Utils/Logger.cpp \
+    Views/Forms/MainFormPage.cpp \
+    Data/Entity/Teacher.cpp \
+    Views/Forms/MainFormPagePupils.cpp
 
 HEADERS += \
     Exceptions/NotWorkingRequest.h \
@@ -50,7 +53,6 @@ HEADERS += \
     Data/Entity/Employe.h \
     Data/DAO/EmployeesDAO.h \
     Data/DAO/IEmployeesDAO.h \
-    Exceptions/EmployeNotFound.h \
     Data/Service/IEmployeesService.h \
     Data/Service/EmployeesService.h \
     Data/DAO/ProfessionsDAO.h \
@@ -60,8 +62,10 @@ HEADERS += \
     Views/Dialogs/AddingEmployeDialog.h \
     Data/Service/ProfessionsService.h \
     Data/Service/IProfessionsService.h \
-    Data/DAO/ESortingMethod.h \
-    Utils/Logger.h
+    Utils/Logger.h \
+    Views/Forms/MainFormPage.h \
+    Data/Entity/Teacher.h \
+    Views/Forms/MainFormPagePupils.h
 
 FORMS += \
     Views/Forms/LogInForm.ui \

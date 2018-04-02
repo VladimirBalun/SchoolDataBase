@@ -1,31 +1,29 @@
 #ifndef MAINFORMPAGEEMPLOYEES_H
 #define MAINFORMPAGEEMPLOYEES_H
 
-#include <QMessageBox>
-#include <QScopedPointer>
-#include <QSharedPointer>
-#include <QStandardItem>
-#include <QStandardItemModel>
 #include "Views/Dialogs/AddingEmployeDialog.h"
 #include "Data/Service/EmployeesService.h"
 #include "Data/Service/ProfessionsService.h"
+#include "MainFormPage.h"
 
 namespace Ui {
 class MainForm;
 }
 
-class MainFormPageEmployees {
+class MainFormPageEmployees : public MainFormPage {
 public:
     MainFormPageEmployees(Ui::MainForm* mainForm);
     void reloadEmployees();
     void addEmploye();
     void removeEmploye();
-    void sortEmployees();
     void selectEmployees();
     void searchEmployees();
+    void addProfession();
+    void removeProfession();
 private:
-    void reloadEmployeesInTable();
+    void reloadEmployeesInTable(QVector<QSharedPointer<Employe>> employees);
     void reloadProfessionsInCheckBox();
+    void removeSelectedRows(QModelIndexList selectedRows);
 private:
     Ui::MainForm* _ui;
     QScopedPointer<IEmployeesService> _employeesService;

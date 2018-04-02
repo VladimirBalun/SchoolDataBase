@@ -1,8 +1,6 @@
 #ifndef ADD_STAFF_DIALOG_H
 #define ADD_STAFF_DIALOG_H
 
-#include <memory>
-#include <iostream>
 #include <QDialog>
 #include <QMessageBox>
 #include <QInputDialog>
@@ -22,8 +20,8 @@ public:
     QSharedPointer<Employe> getData();
     ~AddingEmployeDialog();
 private:
-    Ui::AddingEmployeDialog *ui;
-    std::unique_ptr<IProfessionsService> professionsService;
+    Ui::AddingEmployeDialog *_ui;
+    QScopedPointer<IProfessionsService> _professionsService;
     bool isValidDialog();
 private slots:
     void clickedBtnAddProfession();

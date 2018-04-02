@@ -20,9 +20,11 @@ private slots:
     void clickedBtnReloadEmployees();
     void clickedBtnAddEmploye();
     void clickedBtnRemoveEmploye();
-    void clickedBtnSortEmployees();
     void clickedBtnSelectEmployees();
     void clickedBtnSearchEmployees();
+
+    void clickedBtnAddProfession();
+    void clickedBtnRemoveProfession();
 
     void clickedBtnAddAdmin();
     void clickedBtnChangeAdminPassword();

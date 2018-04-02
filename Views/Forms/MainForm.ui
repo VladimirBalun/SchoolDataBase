@@ -312,83 +312,9 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QGroupBox" name="groupBox_2">
-               <property name="title">
-                <string>Сортировка</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_6">
-                <item>
-                 <widget class="QLabel" name="label_22">
-                  <property name="font">
-                   <font>
-                    <pointsize>8</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Выберите способ сортировки:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="cbxMethodSortingEmployees">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Не выбрано</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>По ФИО</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>По адресу</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>По дате рождения</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btnSortEmployees">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="toolTip">
-                   <string>Отсортировать сотрудников выбранным способом</string>
-                  </property>
-                  <property name="text">
-                   <string>Сортировать</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../../Resources/img.qrc">
-                    <normaloff>:/icons/img/sorting.png</normaloff>:/icons/img/sorting.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
               <widget class="QGroupBox" name="groupBox_3">
                <property name="title">
-                <string>Выборка</string>
+                <string>Выборка сотрудников по профессии</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
                 <item>
@@ -490,6 +416,111 @@
                   <property name="icon">
                    <iconset resource="../../Resources/img.qrc">
                     <normaloff>:/icons/img/search.png</normaloff>:/icons/img/search.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_19">
+               <property name="title">
+                <string>Добавить профессию</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_28">
+                <item>
+                 <widget class="QLabel" name="label_25">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
+                  </property>
+                  <property name="text">
+                   <string>Введите название профессии:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="editAddingProfession">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnAddProfession">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Добавить</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../Resources/img.qrc">
+                    <normaloff>:/icons/img/add.png</normaloff>:/icons/img/add.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_2">
+               <property name="title">
+                <string>Удалить профессию</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QLabel" name="label_22">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Выберите профессию:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="cbxDeletingProfession">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnRemoveProfession">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Отсортировать сотрудников выбранным способом</string>
+                  </property>
+                  <property name="text">
+                   <string>Удалить</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../Resources/img.qrc">
+                    <normaloff>:/icons/img/delete.png</normaloff>:/icons/img/delete.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -724,7 +755,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QTableView" name="tableView_3"/>
+             <widget class="QTableView" name="tableTeachers"/>
             </item>
            </layout>
           </item>
@@ -1160,7 +1191,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QTableView" name="tableView_2"/>
+               <widget class="QTableView" name="tablePupils"/>
               </item>
               <item>
                <widget class="QLabel" name="label_10">
@@ -1170,7 +1201,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QListView" name="listView">
+               <widget class="QListView" name="tableParents">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>

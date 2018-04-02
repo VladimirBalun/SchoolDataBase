@@ -7,6 +7,8 @@
 
 struct IEmployeesService{
     virtual QVector<QSharedPointer<Employe>> getAllEmployees() = 0;
+    virtual QVector<QSharedPointer<Employe>> searchEmployeesByName(const QString& name) = 0;
+    virtual QVector<QSharedPointer<Employe>> selectEmployeesByProfession(const QString& profession) = 0;
     virtual bool addEmploye(const QSharedPointer<Employe>& employe) = 0;
     virtual bool removeEmployeByName(const QString& name) = 0;
     virtual ~IEmployeesService() {}

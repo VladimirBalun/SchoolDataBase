@@ -4,6 +4,14 @@ QVector<QSharedPointer<Employe>> EmployeesService::getAllEmployees() {
     return _emploeesDAO->findAllEmployees();
 }
 
+QVector<QSharedPointer<Employe>> EmployeesService::searchEmployeesByName(const QString& name) {
+    return _emploeesDAO->findEmployeesByName(name);
+}
+
+QVector<QSharedPointer<Employe>> EmployeesService::selectEmployeesByProfession(const QString &profession) {
+    return _emploeesDAO->findEmployeesByProfession(profession);
+}
+
 bool EmployeesService::addEmploye(const QSharedPointer<Employe>& employe) {
     try {
         _emploeesDAO->addEmployee(employe);

@@ -1,10 +1,12 @@
 #include "AdministratorsDAO.h"
 
+AdministratorsDAO::AdministratorsDAO() {
+    _basicSelectQuery = "SELECT login, password FROM administrators ";
+}
+
 QPair<QString, QString> AdministratorsDAO::findAdministratorByLogin(const QString &login) {
     QSqlQuery query;
-    query.prepare("SELECT login, password "
-                  "FROM administrators "
-                  "WHERE login = :login");
+    query.prepare(_basicSelectQuery + "WHERE login = :login");
     query.bindValue(":login", login);
     query.exec();
     if (query.next()) {
@@ -19,16 +21,16 @@ QPair<QString, QString> AdministratorsDAO::findAdministratorByLogin(const QStrin
 }
 
 QMap<QString, QString> AdministratorsDAO::findAllAdministrators() {
-    QMap<QString, QString> administrators;
+    _administrators.clear();
     QSqlQuery query;
-    query.prepare("SELECT login, password FROM administrators");
+    query.prepare(_basicSelectQuery);
     query.exec();
     while (query.next()) {
         QString login = QString(query.value(0).toString());
         QString password = QString(query.value(1).toString());
-        administrators.insert(login, password);
+        _administrators.insert(login, password);
     }
-    return administrators;
+    return _administrators;
 }
 
 void AdministratorsDAO::addAdministrator(const QString &login, const QString &password) {

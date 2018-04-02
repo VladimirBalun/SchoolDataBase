@@ -11,9 +11,11 @@ class EmployeesService : public IEmployeesService {
     QScopedPointer<IEmployeesDAO> _emploeesDAO;
 public:
     EmployeesService() : _emploeesDAO(new EmployeesDAO) {}
-    QVector<QSharedPointer<Employe>> getAllEmployees();
-    bool addEmploye(const QSharedPointer<Employe>& employe);
-    bool removeEmployeByName(const QString &name);
+    QVector<QSharedPointer<Employe>> getAllEmployees() override;
+    QVector<QSharedPointer<Employe>> searchEmployeesByName(const QString& name) override;
+    QVector<QSharedPointer<Employe>> selectEmployeesByProfession(const QString& profession) override;
+    bool addEmploye(const QSharedPointer<Employe>& employe) override;
+    bool removeEmployeByName(const QString &name) override;
 };
 
 #endif

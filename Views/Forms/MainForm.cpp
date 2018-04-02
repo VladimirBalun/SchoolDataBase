@@ -9,10 +9,12 @@ MainForm::MainForm(QWidget* parent) : QMainWindow(parent), _ui(new Ui::MainForm)
 
     connect(_ui->btnReloadEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnReloadEmployees()));
     connect(_ui->btnAddEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddEmploye()));
-    connect(_ui->btnRemoveEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveAdmin()));
-    connect(_ui->btnSortEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSortEmployees()));
+    connect(_ui->btnRemoveEmploye, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveEmploye()));
     connect(_ui->btnSelectEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSelectEmployees()));
     connect(_ui->btnSearchEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSearchEmployees()));
+
+    connect(_ui->btnAddProfession, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddProfession()));
+    connect(_ui->btnRemoveProfession, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveProfession()));
 
     connect(_ui->btnAddAdmin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddAdmin()));
     connect(_ui->btnChangeAdminPassword, SIGNAL(clicked(bool)), this, SLOT(clickedBtnChangeAdminPassword()));
@@ -32,16 +34,22 @@ void MainForm::clickedBtnRemoveEmploye() {
     _mainFormPageEmployees->removeEmploye();
 }
 
-void MainForm::clickedBtnSortEmployees() {
-    _mainFormPageEmployees->sortEmployees();
-}
-
 void MainForm::clickedBtnSelectEmployees() {
     _mainFormPageEmployees->selectEmployees();
 }
 
 void MainForm::clickedBtnSearchEmployees() {
     _mainFormPageEmployees->searchEmployees();
+}
+
+void MainForm::clickedBtnAddProfession()
+{
+    _mainFormPageEmployees->addProfession();
+}
+
+void MainForm::clickedBtnRemoveProfession()
+{
+    _mainFormPageEmployees->removeProfession();
 }
 
 //Page settings

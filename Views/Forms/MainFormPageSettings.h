@@ -1,17 +1,14 @@
 #ifndef MAINFORMSETTINGS_H
 #define MAINFORMSETTINGS_H
 
-#include <QScopedPointer>
-#include <QMessageBox>
-#include <QStandardItem>
-#include <QStandardItemModel>
 #include "Data/Service/AdministratorsService.h"
+#include "MainFormPage.h"
 
 namespace Ui {
 class MainForm;
 }
 
-class MainFormPageSettings {
+class MainFormPageSettings : public MainFormPage {
 public:
     MainFormPageSettings(Ui::MainForm* mainForm);
     void addAdministrator();
@@ -21,7 +18,6 @@ private:
     void reloadAdministratorsInTable();
     void reloadAdministratorsInCheckBox();
     void removeSelectedRows(QModelIndexList selectedRows);
-    QModelIndexList getSelectedRows();
 private:
     Ui::MainForm* _ui;
     QScopedPointer<IAdministratorsService> _administratorsService;
