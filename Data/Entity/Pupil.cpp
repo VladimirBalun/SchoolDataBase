@@ -1,21 +1,21 @@
 #include "Pupil.h"
 
-Pupil::Builder &Pupil::Builder::setName(QString& name) {
+Pupil::Builder &Pupil::Builder::setName(const QString &name) {
     _name = name;
     return *this;
 }
 
-Pupil::Builder &Pupil::Builder::setDateBirth(QString& dateBirth) {
+Pupil::Builder &Pupil::Builder::setDateBirth(const QString &dateBirth) {
     _dateBirth = dateBirth;
     return *this;
 }
 
-Pupil::Builder &Pupil::Builder::setAddress(QString& address) {
+Pupil::Builder &Pupil::Builder::setAddress(const QString& address) {
     _address = address;
     return *this;
 }
 
-Pupil::Builder &Pupil::Builder::setNameClass(QString& nameClass) {
+Pupil::Builder &Pupil::Builder::setNameClass(const QString& nameClass) {
     _nameClass = nameClass;
     return *this;
 }

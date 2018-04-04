@@ -31,7 +31,8 @@ SOURCES += \
     Utils/Logger.cpp \
     Views/Forms/MainFormPage.cpp \
     Data/Entity/Teacher.cpp \
-    Views/Forms/MainFormPagePupils.cpp
+    Views/Forms/MainFormPagePupils.cpp \
+    Data/Service/PupilsService.cpp
 
 HEADERS += \
     Exceptions/NotWorkingRequest.h \
@@ -65,7 +66,9 @@ HEADERS += \
     Utils/Logger.h \
     Views/Forms/MainFormPage.h \
     Data/Entity/Teacher.h \
-    Views/Forms/MainFormPagePupils.h
+    Views/Forms/MainFormPagePupils.h \
+    Data/Service/IPupilsService.h \
+    Data/Service/PupilsService.h
 
 FORMS += \
     Views/Forms/LogInForm.ui \

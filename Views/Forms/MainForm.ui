@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabs">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabEmployes">
        <attribute name="title">
@@ -461,6 +461,12 @@
                     <height>30</height>
                    </size>
                   </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Добавить профессию</string>
+                  </property>
                   <property name="text">
                    <string>Добавить</string>
                   </property>
@@ -513,7 +519,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="toolTip">
-                   <string>Отсортировать сотрудников выбранным способом</string>
+                   <string>Удаить выбранную профессию</string>
                   </property>
                   <property name="text">
                    <string>Удалить</string>
@@ -675,6 +681,9 @@
                <width>40</width>
                <height>40</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string/>
              </property>
              <property name="icon">
               <iconset resource="../../Resources/img.qrc">
@@ -1028,7 +1037,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
-              <widget class="QPushButton" name="pushButton_16">
+              <widget class="QPushButton" name="btnReloadPupilsAndTeachers">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1040,6 +1049,12 @@
                  <width>40</width>
                  <height>40</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>Обновить данные об учениках и их родителях</string>
                </property>
                <property name="icon">
                 <iconset resource="../../Resources/img.qrc">
@@ -1054,7 +1069,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_12">
+              <widget class="QPushButton" name="btnAddPupil">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1066,6 +1081,12 @@
                  <width>40</width>
                  <height>40</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>Добавить ученика</string>
                </property>
                <property name="text">
                 <string/>
@@ -1083,7 +1104,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_13">
+              <widget class="QPushButton" name="btnRemovePupil">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1095,6 +1116,12 @@
                  <width>40</width>
                  <height>40</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>Удалить ученика</string>
                </property>
                <property name="text">
                 <string/>
@@ -1125,7 +1152,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_11">
+              <widget class="QPushButton" name="btnAddParent">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1137,6 +1164,12 @@
                  <width>40</width>
                  <height>40</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>Добавить родителя</string>
                </property>
                <property name="icon">
                 <iconset resource="../../Resources/img.qrc">
@@ -1151,7 +1184,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_14">
+              <widget class="QPushButton" name="btnRemoveParent">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1163,6 +1196,12 @@
                  <width>40</width>
                  <height>40</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>Удалить родителя</string>
                </property>
                <property name="icon">
                 <iconset resource="../../Resources/img.qrc">
@@ -1201,7 +1240,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QListView" name="tableParents">
+               <widget class="QTableView" name="tableParents">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -1246,54 +1285,6 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QGroupBox" name="groupBox_10">
-                 <property name="title">
-                  <string>Сортировка</string>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_19">
-                  <item>
-                   <widget class="QLabel" name="label_17">
-                    <property name="font">
-                     <font>
-                      <pointsize>8</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Выберите способ сортировки:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="comboBox_3">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="pushButton_8">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>Сортировать</string>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../../Resources/img.qrc">
-                      <normaloff>:/icons/img/sorting.png</normaloff>:/icons/img/sorting.png</iconset>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
                 <widget class="QGroupBox" name="groupBox_11">
                  <property name="title">
                   <string>Выборка учеников из класса</string>
@@ -1312,7 +1303,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_4">
+                   <widget class="QComboBox" name="cbxPpupilsClasses">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1322,12 +1313,18 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_9">
+                   <widget class="QPushButton" name="btnSelectPupils">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>Вывести учеников из выбранного класса</string>
                     </property>
                     <property name="text">
                      <string>Выбрать</string>
@@ -1360,7 +1357,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="lineEdit_2">
+                   <widget class="QLineEdit" name="editSearchingPupils">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1373,12 +1370,18 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_10">
+                   <widget class="QPushButton" name="btnSearchPupils">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>Найти учеников по ФИО</string>
                     </property>
                     <property name="text">
                      <string>Поиск</string>
@@ -1411,7 +1414,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_9">
+                   <widget class="QComboBox" name="cbxPupilForChangeClass">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1433,7 +1436,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_10">
+                   <widget class="QComboBox" name="cbxNewClassForPupil">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1443,12 +1446,18 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_21">
+                   <widget class="QPushButton" name="btnCnahgeClassPupil">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>Изменить класс у выбранного ученика</string>
                     </property>
                     <property name="text">
                      <string>Изменить</string>

@@ -19,10 +19,10 @@ public:
         QString _address;
         QString _nameClass;
     public:
-        Builder& setName(QString& name);
-        Builder& setDateBirth(QString& dateBirth);
-        Builder& setAddress(QString& address);
-        Builder& setNameClass(QString& nameClass);
+        Builder& setName(const QString& name);
+        Builder& setDateBirth(const QString& dateBirth);
+        Builder& setAddress(const QString& address);
+        Builder& setNameClass(const QString& nameClass);
         QSharedPointer<Pupil> build();
     };
 
