@@ -42,7 +42,7 @@ void PupilsDAO::loadPupilsInVectorFromDB(QSqlQuery& query) {
                 .setName(QString(query.value(0).toString()))
                 .setDateBirth(QString(query.value(1).toString()))
                 .setAddress(QString(query.value(2).toString()))
-                .setNameClass(QString(query.value(2).toString()))
+                .setNameClass(QString(query.value(3).toString()))
                 .build();
         _pupils.append(pupil);
     }
@@ -51,11 +51,13 @@ void PupilsDAO::loadPupilsInVectorFromDB(QSqlQuery& query) {
 
 void PupilsDAO::addPupil(const QSharedPointer<Pupil>& pupil) {
     QSqlQuery query;
-    query.prepare("INSERT INTO pupils(name, date_birth, address) "
-                  "VALUES(':name', ':date_birth', ':address')"); // !!!!!!!!!!!!!! ADD class
+    query.prepare("INSERT INTO pupils(name, date_birth, address, id_class) "
+                  "VALUES(:name, :date_birth, :address, "
+                  "(SELECT c.id FROM classes c WHERE c.name = :nameClass))");
     query.bindValue(":name", pupil->getName());
     query.bindValue(":date_birth", pupil->getDateBirth());
     query.bindValue(":address", pupil->getAddress());
+    query.bindValue(":nameClass", pupil->getNameClass());
     if (!query.exec()) {
         QString exceptionMessage = "Error in adding an pupil[" + pupil->getName() + "]. Query: " + query.lastQuery();
         throw NotWorkingRequest(QString(exceptionMessage));

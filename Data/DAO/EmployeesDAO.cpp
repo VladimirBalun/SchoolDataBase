@@ -65,7 +65,6 @@ void EmployeesDAO::addEmployee(const QSharedPointer<Employe>& employe) {
     query.prepare("INSERT INTO employees(name, date_birth, address, phone_number, personal_data, id_profession) "
                   "VALUES(:name_employe, :date_birth, :address, :phone_number, :personal_data, "
                   "(SELECT p.id FROM professions p WHERE p.name = :name_profession))");
-    std::cout << employe.data() << std::endl;
     query.bindValue(":name_employe", employe->getName());
     query.bindValue(":date_birth",  employe->getDateBirth());
     query.bindValue(":address",  employe->getAddress());

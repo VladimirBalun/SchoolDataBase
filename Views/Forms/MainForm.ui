@@ -1303,7 +1303,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="cbxPpupilsClasses">
+                   <widget class="QComboBox" name="cbxPupilsClasses">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1396,9 +1396,60 @@
                 </widget>
                </item>
                <item>
+                <widget class="QGroupBox" name="groupBox_10">
+                 <property name="title">
+                  <string>Добавить класс</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_19">
+                  <item>
+                   <widget class="QLabel" name="label_17">
+                    <property name="font">
+                     <font>
+                      <pointsize>8</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Введите название:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="editAddingNewClass">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maxLength">
+                     <number>11</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnAddClass">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Добавить</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../../Resources/img.qrc">
+                      <normaloff>:/icons/img/add.png</normaloff>:/icons/img/add.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
                 <widget class="QGroupBox" name="groupBox_18">
                  <property name="title">
-                  <string>Изменить класс ученика</string>
+                  <string>Удалить класс</string>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_27">
                   <item>
@@ -1409,12 +1460,12 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>Выберите ученика:</string>
+                     <string>Выберите класс:</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="cbxPupilForChangeClass">
+                   <widget class="QComboBox" name="cbxDeletingClass">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1424,43 +1475,19 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_21">
-                    <property name="font">
-                     <font>
-                      <pointsize>8</pointsize>
-                     </font>
+                   <widget class="QPushButton" name="btnRemoveClass">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
                     </property>
                     <property name="text">
-                     <string>Выберите новый класс для ученика:</string>
+                     <string>Удалить</string>
                     </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="cbxNewClassForPupil">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btnCnahgeClassPupil">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="toolTip">
-                     <string>Изменить класс у выбранного ученика</string>
-                    </property>
-                    <property name="text">
-                     <string>Изменить</string>
+                    <property name="icon">
+                     <iconset resource="../../Resources/img.qrc">
+                      <normaloff>:/icons/img/delete.png</normaloff>:/icons/img/delete.png</iconset>
                     </property>
                    </widget>
                   </item>

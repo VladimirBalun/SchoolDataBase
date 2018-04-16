@@ -2,7 +2,7 @@
 #include "ui_MainForm.h"
 
 MainFormPagePupils::MainFormPagePupils(Ui::MainForm* mainForm) : _ui(mainForm), _pupilsService(new PupilsService),
-    _modelPupils(new QStandardItemModel), _modelParents(new QStandardItemModel)  {
+    _modelPupils(new QStandardItemModel), _modelParents(new QStandardItemModel), _classesService(new ClassesService)  {
 
     QStringList headers = {"ФИО", "Дата рождения", "Адрес", "Класс"};
     _modelPupils->setHorizontalHeaderLabels(headers);
@@ -10,6 +10,7 @@ MainFormPagePupils::MainFormPagePupils(Ui::MainForm* mainForm) : _ui(mainForm), 
     _ui->tablePupils->resizeColumnsToContents();
     _ui->tablePupils->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
 
+    reloadClassesInCheckBox();
     reloadPupilsInTable(_pupilsService->getAllPupils());
 }
 
@@ -23,13 +24,34 @@ void MainFormPagePupils::reloadPupilsInTable(QVector<QSharedPointer<Pupil>> pupi
     }
 }
 
+void MainFormPagePupils::reloadClassesInCheckBox() {
+    QVector<QString> classes = _classesService->getAllClasses();
+    _ui->cbxPupilsClasses->clear();
+    _ui->cbxDeletingClass->clear();
+    _ui->cbxPupilsClasses->addItem("Не выбрано");
+    _ui->cbxDeletingClass->addItem("Не выбрано");
+    for (auto curClass : classes) {
+          _ui->cbxPupilsClasses->addItem(curClass);
+          _ui->cbxDeletingClass->addItem(curClass);
+    }
+}
+
 void MainFormPagePupils::reloadPupilsAndParents() {
     reloadPupilsInTable(_pupilsService->getAllPupils());
     QMessageBox::information(0, "Успешная операция", "Сотрудники и их родители успешно обновлены.");
 }
 
 void MainFormPagePupils::addPupil() {
-
+    AddingPupilDialog addingPupilDialog;
+    if (addingPupilDialog.exec() == QDialog::Accepted) {
+        QSharedPointer<Pupil> pupil = addingPupilDialog.getData();
+        if (_pupilsService->addPupil(pupil)) {
+            QMessageBox::information(0, "Успешная операция", "Ученик [" + pupil->getName() + "] был успешно добавлен.");
+            reloadPupilsInTable(_pupilsService->getAllPupils());
+        } else {
+            QMessageBox::warning(0, "Неуспешная операция", "Видимо уже существует такой сотрудник с таким именем, добавление нового невозможно.");
+        }
+    }
 }
 
 void MainFormPagePupils::removePupil() {
@@ -53,12 +75,12 @@ void MainFormPagePupils::removePupil() {
 }
 
 void MainFormPagePupils::selectPupils() {
-    QString classPupils = _ui->cbxProfessions->currentText();
+    QString classPupils = _ui->cbxPupilsClasses->currentText();
     if (classPupils == "Не выбрано") {
         QMessageBox::critical(0, "Ошибка выборки", "Не выбран класс, выборка ученков невозможна.");
         return;
     }
-     reloadPupilsInTable(_pupilsService->getPupilsByClass(classPupils));
+    reloadPupilsInTable(_pupilsService->getPupilsByClass(classPupils));
 }
 
 void MainFormPagePupils::searchPupils() {
@@ -86,4 +108,32 @@ void MainFormPagePupils::removeParent() {
     }
 }
 
+void MainFormPagePupils::addClass() {
+    QString newClass = _ui->editAddingNewClass->text();
+    if (newClass.isEmpty()) {
+        QMessageBox::critical(0, "Ошибка добавления", "Не введено название класса, добавление невозможно.");
+        return;
+    }
+    if(_classesService->addClass(newClass)){
+        QMessageBox::information(0, "Успешная операция", "Класс [" + newClass + "] успешно добавлен.");
+        reloadClassesInCheckBox();
+        _ui->editAddingNewClass->setText("");
+    } else {
+        QMessageBox::warning(0, "Неудачная операция", "Класс [" + newClass + "] не была добавлен. Возможно такой класс уже существует.");
+    }
+}
 
+void MainFormPagePupils::removeClass() {
+    QString oldClass = _ui->cbxDeletingClass->currentText();
+    if (oldClass == "Не выбрано") {
+        QMessageBox::critical(0, "Ошибка удаления", "Не выбрано название профессии, удаление невозможно.");
+        return;
+    }
+    if(_classesService->removeClassByName(oldClass)){
+        QMessageBox::information(0, "Успешная операция", "Класс [" + oldClass + "] успешно удален.");
+        reloadClassesInCheckBox();
+        reloadPupilsInTable(_pupilsService->getAllPupils());
+    } else {
+        QMessageBox::warning(0, "Неудачная операция", "Класс [" + oldClass + "] не была удален.");
+    }
+}

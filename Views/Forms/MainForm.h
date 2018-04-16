@@ -33,6 +33,8 @@ private slots:
     void clickedBtnReloadPupils();
     void clickedBtnAddParent();
     void clickedBtnRemoveParent();
+    void clickedBtnAddClass();
+    void clickedBtnRemoveClass();
 
     void clickedBtnAddAdmin();
     void clickedBtnChangeAdminPassword();

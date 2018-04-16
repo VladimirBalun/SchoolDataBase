@@ -50,6 +50,7 @@ void MainFormPageEmployees::addEmploye() {
         QSharedPointer<Employe> employe = addingEmployeDialog.getData();
         if (_employeesService->addEmploye(employe)) {
             QMessageBox::information(0, "Успешная операция", "Сотрудник [" + employe->getName() + "] был успешно добавлен.");
+            reloadEmployeesInTable(_employeesService->getAllEmployees());
         } else {
             QMessageBox::warning(0, "Неуспешная операция", "Видимо уже существует такой сотрудник с таким именем, добавление нового невозможно.");
         }

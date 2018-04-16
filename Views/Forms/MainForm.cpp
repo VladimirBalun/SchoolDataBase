@@ -23,6 +23,8 @@ MainForm::MainForm(QWidget* parent) : QMainWindow(parent), _ui(new Ui::MainForm)
     connect(_ui->btnReloadPupilsAndTeachers, SIGNAL(clicked(bool)), this, SLOT(clickedBtnReloadPupils()));
     connect(_ui->btnAddParent, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddParent()));
     connect(_ui->btnRemoveParent, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveParent()));
+    connect(_ui->btnAddClass, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddClass()));
+    connect(_ui->btnRemoveClass, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveClass()));
 
     connect(_ui->btnAddAdmin, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddAdmin()));
     connect(_ui->btnChangeAdminPassword, SIGNAL(clicked(bool)), this, SLOT(clickedBtnChangeAdminPassword()));
@@ -85,6 +87,14 @@ void MainForm::clickedBtnAddParent() {
 
 void MainForm::clickedBtnRemoveParent() {
     _mainFormPagePupils->removeParent();
+}
+
+void MainForm::clickedBtnAddClass() {
+    _mainFormPagePupils->addClass();
+}
+
+void MainForm::clickedBtnRemoveClass() {
+    _mainFormPagePupils->removeClass();
 }
 
 //Page settings
