@@ -33,6 +33,7 @@ private slots:
     void clickedBtnReloadPupils();
     void clickedBtnAddParent();
     void clickedBtnRemoveParent();
+    void selectedPupil(QModelIndex index);
     void clickedBtnAddClass();
     void clickedBtnRemoveClass();
 

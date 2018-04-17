@@ -2,13 +2,22 @@
 #include "ui_MainForm.h"
 
 MainFormPagePupils::MainFormPagePupils(Ui::MainForm* mainForm) : _ui(mainForm), _pupilsService(new PupilsService),
-    _modelPupils(new QStandardItemModel), _modelParents(new QStandardItemModel), _classesService(new ClassesService)  {
+    _modelPupils(new QStandardItemModel), _modelParents(new QStandardItemModel), _classesService(new ClassesService),
+    _parentsService(new ParentsService) {
 
-    QStringList headers = {"ФИО", "Дата рождения", "Адрес", "Класс"};
-    _modelPupils->setHorizontalHeaderLabels(headers);
+    QStringList headerPupils = { "ФИО", "Дата рождения", "Адрес", "Класс" };
+    QStringList headerParents = { "ФИО", "Дата рождения", "Адрес" };
+
+    _modelPupils->setHorizontalHeaderLabels(headerPupils);
+    _modelParents->setHorizontalHeaderLabels(headerParents);
+
     _ui->tablePupils->setModel(_modelPupils.data());
     _ui->tablePupils->resizeColumnsToContents();
     _ui->tablePupils->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+
+    _ui->tableParents->setModel(_modelParents.data());
+    _ui->tableParents->resizeColumnsToContents();
+    _ui->tableParents->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
 
     reloadClassesInCheckBox();
     reloadPupilsInTable(_pupilsService->getAllPupils());
@@ -21,6 +30,15 @@ void MainFormPagePupils::reloadPupilsInTable(QVector<QSharedPointer<Pupil>> pupi
         _modelPupils->setItem(i, 1, new QStandardItem(pupils.at(i)->getDateBirth()));
         _modelPupils->setItem(i, 2, new QStandardItem(pupils.at(i)->getAddress()));
         _modelPupils->setItem(i, 3, new QStandardItem(pupils.at(i)->getNameClass()));
+    }
+}
+
+void MainFormPagePupils::reloadParentsInTable(QVector<QSharedPointer<Parent>> parents) {
+    _modelParents->removeRows(0, _modelParents->rowCount());
+    for (long i = 0; i < parents.size(); i++) {
+        _modelParents->setItem(i, 0, new QStandardItem(parents.at(i)->getName()));
+        _modelParents->setItem(i, 1, new QStandardItem(parents.at(i)->getDateBirth()));
+        _modelParents->setItem(i, 2, new QStandardItem(parents.at(i)->getAddress()));
     }
 }
 
@@ -38,7 +56,7 @@ void MainFormPagePupils::reloadClassesInCheckBox() {
 
 void MainFormPagePupils::reloadPupilsAndParents() {
     reloadPupilsInTable(_pupilsService->getAllPupils());
-    QMessageBox::information(0, "Успешная операция", "Сотрудники и их родители успешно обновлены.");
+    QMessageBox::information(0, "Успешная операция", "Ученики и их родители успешно обновлены.");
 }
 
 void MainFormPagePupils::addPupil() {
@@ -49,7 +67,7 @@ void MainFormPagePupils::addPupil() {
             QMessageBox::information(0, "Успешная операция", "Ученик [" + pupil->getName() + "] был успешно добавлен.");
             reloadPupilsInTable(_pupilsService->getAllPupils());
         } else {
-            QMessageBox::warning(0, "Неуспешная операция", "Видимо уже существует такой сотрудник с таким именем, добавление нового невозможно.");
+            QMessageBox::warning(0, "Неуспешная операция", "Видимо уже существует такой ученик с таким именем, добавление нового невозможно.");
         }
     }
 }
@@ -93,7 +111,16 @@ void MainFormPagePupils::searchPupils() {
 }
 
 void MainFormPagePupils::addParent() {
-
+    AddingParentDialog addingParentDialog;
+    if (addingParentDialog.exec() == QDialog::Accepted) {
+        QSharedPointer<Parent> parent = addingParentDialog.getData();
+        if (_parentsService->addParent(parent)) {
+            QMessageBox::information(0, "Успешная операция", "Родитель [" + parent->getName() + "] был успешно добавлен.");
+            reloadParentsInTable(_parentsService->getParentsByChild(""));
+        } else {
+            QMessageBox::warning(0, "Неуспешная операция", "Видимо уже существует такой родитель с таким именем, добавление нового невозможно.");
+        }
+    }
 }
 
 void MainFormPagePupils::removeParent() {
@@ -104,8 +131,22 @@ void MainFormPagePupils::removeParent() {
     }
     QMessageBox::StandardButton confirm = QMessageBox::question(0, "Подтверждение", "Действительно хотите удалить родителя(ей)?", QMessageBox::Yes|QMessageBox::No);
     if(confirm == QMessageBox::Yes) {
-        reloadPupilsInTable(_pupilsService->getAllPupils());
+        for (auto row : selectedRows) {
+            QString name = row.data().toString();
+            if(_parentsService->removeParentByName(name)) {
+                QMessageBox::information(0, "Успешная операция", "Родитель [" + name + "] успешно удален.");
+            } else {
+                QMessageBox::warning(0, "Неудачная операция", "Такого родителя не существует.");
+            }
+        }
+        reloadParentsInTable(_parentsService->getParentsByChild(""));
     }
+}
+
+void MainFormPagePupils::showParentsSelectedPupil(QModelIndex index) {
+    QModelIndex selectedPupil = index.sibling(index.row(), 0);
+    QString namePupil = selectedPupil.data().toString();
+    reloadParentsInTable(_parentsService->getParentsByChild(namePupil));
 }
 
 void MainFormPagePupils::addClass() {

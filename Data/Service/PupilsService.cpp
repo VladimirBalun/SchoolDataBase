@@ -15,7 +15,7 @@ QVector<QSharedPointer<Pupil>> PupilsService::getAllPupils() {
 bool PupilsService::addPupil(const QSharedPointer<Pupil>& pupil) {
     try {
         _pupilsDAO->addPupil(pupil);
-        _log.debug(__FILE__, "Employe [" + pupil->toString() + "] was added.");
+        _log.debug(__FILE__, "Pupil [" + pupil->toString() + "] was added.");
         return true;
     } catch(NotWorkingRequest& e) {
         _log.warning(__FILE__, e.what());
@@ -26,7 +26,7 @@ bool PupilsService::addPupil(const QSharedPointer<Pupil>& pupil) {
 bool PupilsService::removePupilByName(const QString& name) {
     try {
         _pupilsDAO->removePupilByName(name);
-        _log.debug(__FILE__, "Employe [" + name + "] was deleted.");
+        _log.debug(__FILE__, "Pupil [" + name + "] was deleted.");
         return true;
     } catch(NotWorkingRequest& e) {
         _log.warning(__FILE__, e.what());

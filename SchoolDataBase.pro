@@ -28,6 +28,7 @@ SOURCES += \
     Views/Forms/MainFormPageEmployees.cpp \
     Views/Dialogs/AddingEmployeDialog.cpp \
     Views/Dialogs/AddingPupilDialog.cpp \
+    Views/Dialogs/AddingParentDialog.cpp \
     Data/Service/ProfessionsService.cpp \
     Utils/Logger.cpp \
     Views/Forms/MainFormPage.cpp \
@@ -35,7 +36,9 @@ SOURCES += \
     Views/Forms/MainFormPagePupils.cpp \
     Data/Service/PupilsService.cpp \
     Data/DAO/ClassesDAO.cpp \
-    Data/Service/ClassesService.cpp
+    Data/Service/ClassesService.cpp \
+    Data/DAO/ParentsDAO.cpp \
+    Data/Service/ParentsService.cpp
 
 HEADERS += \
     Exceptions/NotWorkingRequest.h \
@@ -65,6 +68,7 @@ HEADERS += \
     Views/Forms/MainFormPageEmployees.h \
     Views/Dialogs/AddingEmployeDialog.h \
     Views/Dialogs/AddingPupilDialog.h \
+    Views/Dialogs/AddingParentDialog.h \
     Data/Service/ProfessionsService.h \
     Data/Service/IProfessionsService.h \
     Utils/Logger.h \
@@ -75,13 +79,18 @@ HEADERS += \
     Data/Service/PupilsService.h \
     Data/DAO/ClassesDAO.h \
     Data/Service/IClassesService.h \
-    Data/Service/ClassesService.h
+    Data/Service/ClassesService.h \
+    Data/DAO/IParentsDAO.h \
+    Data/DAO/ParentsDAO.h \
+    Data/Service/IParentsService.h \
+    Data/Service/ParentsService.h
 
 FORMS += \
     Views/Forms/LogInForm.ui \
     Views/Forms/MainForm.ui \
     Views/Dialogs/AddingEmployeDialog.ui \
-    Views/Dialogs/AddingPupilDialog.ui
+    Views/Dialogs/AddingPupilDialog.ui \
+    Views/Dialogs/AddingParentDialog.ui
 
 RESOURCES += \
     Resources/img.qrc
