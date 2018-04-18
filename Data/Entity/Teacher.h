@@ -9,24 +9,13 @@ class Teacher {
     QString _name;
     QString _nameClass;
     QVector<QString> _predmets;
-    Teacher(const QString& name, const QString& nameClass, const QVector<QString>& predmets) :
-        _name(name), _nameClass(nameClass), _predmets(predmets) {}
 public:
-
-    class Builder {
-        QString _name;
-        QString _nameClass;
-        QVector<QString> _predmets;
-    public:
-        Builder& setName(const QString& name);
-        Builder& setNameClass(const QString& nameClass);
-        Builder& setPredmets(const QVector<QString>& predmets);
-        QSharedPointer<Teacher> build();
-    };
+    Teacher(const QString& name, const QString& nameClass) : _name(name), _nameClass(nameClass) {}
 
     QString getName() const;
     QString getNameClass() const;
     QVector<QString> getPredmets() const;
+    void addPredmet(const QString& namePredmet);
 
     QString toString() const;
     friend std::ostream& operator << (std::ostream& os, Teacher *teacher);

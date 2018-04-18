@@ -38,7 +38,9 @@ SOURCES += \
     Data/DAO/ClassesDAO.cpp \
     Data/Service/ClassesService.cpp \
     Data/DAO/ParentsDAO.cpp \
-    Data/Service/ParentsService.cpp
+    Data/Service/ParentsService.cpp \
+    Data/DAO/TeachersDAO.cpp \
+    Data/Service/TeachersService.cpp
 
 HEADERS += \
     Exceptions/NotWorkingRequest.h \
@@ -83,7 +85,11 @@ HEADERS += \
     Data/DAO/IParentsDAO.h \
     Data/DAO/ParentsDAO.h \
     Data/Service/IParentsService.h \
-    Data/Service/ParentsService.h
+    Data/Service/ParentsService.h \
+    Data/DAO/ITeachersDAO.h \
+    Data/DAO/TeachersDAO.h \
+    Data/Service/ITeachersService.h \
+    Data/Service/TeachersService.h
 
 FORMS += \
     Views/Forms/LogInForm.ui \

@@ -12,26 +12,9 @@ QVector<QString> Teacher::getPredmets() const {
     return _predmets;
 }
 
-Teacher::Builder& Teacher::Builder::setName(const QString &name) {
-    _name = name;
-    return *this;
+void Teacher::addPredmet(const QString &namePredmet) {
+    _predmets.append(namePredmet);
 }
-
-Teacher::Builder& Teacher::Builder::setNameClass(const QString &nameClass) {
-    _nameClass = nameClass;
-    return *this;
-}
-
-Teacher::Builder& Teacher::Builder::setPredmets(const QVector<QString> &predmets) {
-    _predmets = predmets;
-    return *this;
-}
-
-QSharedPointer<Teacher> Teacher::Builder::build() {
-    QSharedPointer<Teacher> teacher(new Teacher(_name, _nameClass, _predmets));
-    return teacher;
-}
-
 
 QString Teacher::toString() const {
     return "name = " + _name + " nameClass = " + _nameClass;

@@ -7,8 +7,7 @@
 #include "Exceptions/NotWorkingRequest.h"
 #include "Data/Service/IPupilsService.h"
 
-class PupilsService : public IPupilsService
-{
+class PupilsService : public IPupilsService {
     Logger _log;
     QScopedPointer<IPupilsDAO> _pupilsDAO;
 public:
