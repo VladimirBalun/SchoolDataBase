@@ -8,7 +8,6 @@
 
 class TeachersDAO : public ITeachersDAO {
 public:
-    TeachersDAO();
     QVector<QSharedPointer<Teacher>> findAllTeachers() override;
     void addPredmetForTeacher(const QString& nameTeacher, const QString& namePredmet) override;
     void removePredmetTeacherByName(const QString& nameTeacher, const QString& namePredmet) override;

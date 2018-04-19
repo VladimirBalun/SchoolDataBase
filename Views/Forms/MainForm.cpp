@@ -2,9 +2,11 @@
 #include "ui_MainForm.h"
 
 MainForm::MainForm(QWidget* parent) : QMainWindow(parent), _ui(new Ui::MainForm) {
+
     _ui->setupUi(this);
 
     _mainFormPageEmployees = std::make_unique<MainFormPageEmployees>(_ui);
+    _mainFormPageTeachers = std::make_unique<MainFormPageTeachers>(_ui);
     _mainFormPagePupils = std::make_unique<MainFormPagePupils>(_ui);
     _mainFormPageSettings = std::make_unique<MainFormPageSettings>(_ui);
 
@@ -15,6 +17,11 @@ MainForm::MainForm(QWidget* parent) : QMainWindow(parent), _ui(new Ui::MainForm)
     connect(_ui->btnSearchEmployees, SIGNAL(clicked(bool)), this, SLOT(clickedBtnSearchEmployees()));
     connect(_ui->btnAddProfession, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddProfession()));
     connect(_ui->btnRemoveProfession, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveProfession()));
+
+    connect(_ui->btnAddPredmetForTeacher, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddPredmetForTeacher()));
+    connect(_ui->btnRemoveTeacherPredmet, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemoveTeacherPredmet()));
+    connect(_ui->btnAddPredmet, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddPredmet()));
+    connect(_ui->btnDeletePredmet, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemovePredmet()));
 
     connect(_ui->btnAddPupil, SIGNAL(clicked(bool)), this, SLOT(clickedBtnAddPupil()));
     connect(_ui->btnRemovePupil, SIGNAL(clicked(bool)), this, SLOT(clickedBtnRemovePupil()));
@@ -39,6 +46,7 @@ void MainForm::clickedBtnReloadEmployees(){
 
 void MainForm::clickedBtnAddEmploye() {
     _mainFormPageEmployees->addEmploye();
+    _mainFormPageTeachers->reloadTeachersInTable();
 }
 
 void MainForm::clickedBtnRemoveEmploye() {
@@ -59,6 +67,23 @@ void MainForm::clickedBtnAddProfession() {
 
 void MainForm::clickedBtnRemoveProfession() {
     _mainFormPageEmployees->removeProfession();
+}
+
+// Page teachers
+void MainForm::clickedBtnAddPredmetForTeacher() {
+    _mainFormPageTeachers->addPredmetForTeacher();
+}
+
+void MainForm::clickedBtnRemoveTeacherPredmet() {
+    _mainFormPageTeachers->removeTeacherPredmet();
+}
+
+void MainForm::clickedBtnAddPredmet() {
+    _mainFormPageTeachers->addPredmet();
+}
+
+void MainForm::clickedBtnRemovePredmet() {
+    _mainFormPageTeachers->removePredmet();
 }
 
 // Page pupils and employees

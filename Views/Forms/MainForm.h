@@ -5,6 +5,7 @@
 #include <QMainWindow>
 
 #include "MainFormPageEmployees.h"
+#include "MainFormPageTeachers.h"
 #include "MainFormPagePupils.h"
 #include "MainFormPageSettings.h"
 
@@ -26,6 +27,11 @@ private slots:
     void clickedBtnAddProfession();
     void clickedBtnRemoveProfession();
 
+    void clickedBtnAddPredmetForTeacher();
+    void clickedBtnRemoveTeacherPredmet();
+    void clickedBtnAddPredmet();
+    void clickedBtnRemovePredmet();
+
     void clickedBtnAddPupil();
     void clickedBtnRemovePupil();
     void clickedBtnSelectPupils();
@@ -43,6 +49,7 @@ private slots:
 private:
     Ui::MainForm* _ui;
     std::unique_ptr<MainFormPageEmployees> _mainFormPageEmployees;
+    std::unique_ptr<MainFormPageTeachers> _mainFormPageTeachers;
     std::unique_ptr<MainFormPagePupils> _mainFormPagePupils;
     std::unique_ptr<MainFormPageSettings> _mainFormPageSettings;
 };

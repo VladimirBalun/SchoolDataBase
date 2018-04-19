@@ -9,7 +9,7 @@
 
 class TeachersService : public ITeachersService {
     Logger _log;
-    QScopedPointer<ITeachersDAO> _teachersDAO;
+    QScopedPointer<TeachersDAO> _teachersDAO;
 public:
     TeachersService() : _teachersDAO(new TeachersDAO) {}
     QVector<QSharedPointer<Teacher>> getAllTeachers() override;

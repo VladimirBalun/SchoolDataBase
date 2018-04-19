@@ -12,7 +12,7 @@ namespace Ui {
 class MainForm;
 }
 
-class MainFormPagePupils : MainFormPage {
+class MainFormPagePupils : public MainFormPage {
 public:
     MainFormPagePupils(Ui::MainForm* mainForm);
     void reloadPupilsAndParents();

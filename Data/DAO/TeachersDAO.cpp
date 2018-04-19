@@ -1,6 +1,6 @@
 #include "TeachersDAO.h"
 
-QVector<QSharedPointer<Teacher> > TeachersDAO::findAllTeachers() {
+QVector<QSharedPointer<Teacher>> TeachersDAO::findAllTeachers() {
     _teachers.clear();
     QSqlQuery query;
     query.prepare("SELECT "

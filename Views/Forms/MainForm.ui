@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>750</width>
-    <height>812</height>
+    <height>851</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabs">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabEmployes">
        <attribute name="title">
@@ -601,61 +601,6 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_22">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>40</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="../../Resources/img.qrc">
-               <normaloff>:/icons/img/add.png</normaloff>:/icons/img/add.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>25</width>
-               <height>25</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_23">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>40</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="icon">
-              <iconset resource="../../Resources/img.qrc">
-               <normaloff>:/icons/img/delete.png</normaloff>:/icons/img/delete.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>25</width>
-               <height>25</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
             <spacer name="horizontalSpacer_4">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -784,107 +729,33 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <item>
-              <widget class="QGroupBox" name="groupBox_14">
-               <property name="title">
-                <string>Сортировка</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_22">
-                <item>
-                 <widget class="QLabel" name="label_12">
-                  <property name="font">
-                   <font>
-                    <pointsize>8</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Выберите способ сортировки:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="comboBox_5">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_17">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>Сортировать</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../../Resources/img.qrc">
-                    <normaloff>:/icons/img/sorting.png</normaloff>:/icons/img/sorting.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="groupBox_15">
-               <property name="title">
-                <string>Поиск по ФИО</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_23">
-                <item>
-                 <widget class="QLabel" name="label_13">
-                  <property name="font">
-                   <font>
-                    <pointsize>8</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Введите ФИО учителя:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="lineEdit_3">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_18">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>Поиск</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../../Resources/img.qrc">
-                    <normaloff>:/icons/img/search.png</normaloff>:/icons/img/search.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
               <widget class="QGroupBox" name="groupBox_16">
                <property name="title">
                 <string>Добавить предмет учителю</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_24">
+                <item>
+                 <widget class="QLabel" name="label_21">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Выберите учителя:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="cbxTeachersForAddingPredmer">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
                 <item>
                  <widget class="QLabel" name="label_14">
                   <property name="font">
@@ -898,7 +769,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox_6">
+                 <widget class="QComboBox" name="cbxAddingPredmetForTeacher">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -908,7 +779,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_19">
+                 <widget class="QPushButton" name="btnAddPredmetForTeacher">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -946,7 +817,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox_7">
+                 <widget class="QComboBox" name="cbxTeachers">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -968,7 +839,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox_8">
+                 <widget class="QComboBox" name="cbxPredmets">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -978,7 +849,103 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_20">
+                 <widget class="QPushButton" name="btnRemoveTeacherPredmet">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Удалить</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../Resources/img.qrc">
+                    <normaloff>:/icons/img/delete.png</normaloff>:/icons/img/delete.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_14">
+               <property name="title">
+                <string>Добавить предмет</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_22">
+                <item>
+                 <widget class="QLabel" name="label_12">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Введите название предмета:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="editAddingPredmet">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnAddPredmet">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Добавить</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../Resources/img.qrc">
+                    <normaloff>:/icons/img/add.png</normaloff>:/icons/img/add.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_15">
+               <property name="title">
+                <string>Удалить предмет</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_23">
+                <item>
+                 <widget class="QLabel" name="label_13">
+                  <property name="font">
+                   <font>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Выберите предмет для удаления:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="cbxDeletingPredmet">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnDeletePredmet">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
