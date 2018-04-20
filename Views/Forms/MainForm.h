@@ -4,10 +4,10 @@
 #include <memory>
 #include <QMainWindow>
 
-#include "MainFormPageEmployees.h"
-#include "MainFormPageTeachers.h"
-#include "MainFormPagePupils.h"
-#include "MainFormPageSettings.h"
+#include "PagesMainForm/MainFormPageEmployees.h"
+#include "PagesMainForm/MainFormPageTeachers.h"
+#include "PagesMainForm/MainFormPagePupils.h"
+#include "PagesMainForm/MainFormPageSettings.h"
 
 namespace Ui {
 class MainForm;

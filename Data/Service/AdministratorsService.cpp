@@ -38,6 +38,7 @@ bool AdministratorsService::changePasswordAdministratoByLogin(const QString &log
 }
 
 bool AdministratorsService::isExistAdministrator(const QString& login, const QString& password) {
+    QString hashPassword = _administratorsDAO->hashPassword(password);
     QPair<QString, QString> admin;
     try {
         admin = _administratorsDAO->findAdministratorByLogin(login);
@@ -45,7 +46,7 @@ bool AdministratorsService::isExistAdministrator(const QString& login, const QSt
         _log.warning(__FILE__, e.what());
         return false;
     }
-    if(admin.first == login && admin.second == password) {
+    if(admin.first == login && admin.second == hashPassword) {
         return true;
     } else {
         return false;

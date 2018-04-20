@@ -7,10 +7,10 @@
 #include "Exceptions/NotWorkingRequest.h"
 
 struct PredmetsDAO : public IPredmetsDAO {
-    QVector<QString> findAllPredmets();
-    void addPredmet(QString &name);
-    void removePredmetByName(QString &name);
-    void changeNamePredmet(QString &oldName, QString &newName);
+    QVector<QString> findAllPredmets() override;
+    void addPredmet(const QString &name) override;
+    void removePredmetByName(const QString& name) override;
+    void changeNamePredmet(const QString& oldName, const QString& newName) override;
 };
 
 #endif

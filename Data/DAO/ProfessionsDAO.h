@@ -3,7 +3,7 @@
 
 #include <QtSql>
 #include <QSqlQuery>
-#include "Data/DAO/IProfessionsDAO.h"
+#include "IProfessionsDAO.h"
 #include "Exceptions/NotWorkingRequest.h"
 
 struct ProfessionsDAO : public IProfessionsDAO {

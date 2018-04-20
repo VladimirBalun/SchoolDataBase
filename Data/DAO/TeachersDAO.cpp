@@ -15,12 +15,12 @@ QVector<QSharedPointer<Teacher>> TeachersDAO::findAllTeachers() {
     while (query.next()) {
         QString name = query.value(0).toString();
         QString className = query.value(1).toString();
-        if(_teachers.isEmpty() || _teachers.last()->getName() != name){
+        if(!_teachers.isEmpty() && _teachers.last()->getName() == name){
+            _teachers.last()->addPredmet(query.value(2).toString());
+        } else {
             QSharedPointer<Teacher> teacher(new Teacher(name, className));
             teacher->addPredmet(query.value(2).toString());
             _teachers.append(teacher);
-        } else {
-            _teachers.last()->addPredmet(query.value(2).toString());
         }
     }
     return _teachers;
@@ -52,5 +52,4 @@ void TeachersDAO::removePredmetTeacherByName(const QString &nameTeacher, const Q
         throw NotWorkingRequest(QString(exceptionMessage));
     }
 }
-
 

@@ -19,21 +19,21 @@ SOURCES += \
     Views/Forms/MainForm.cpp \
     Data/Service/AdministratorsService.cpp \
     Data/DAO/PupilsDAO.cpp \
-    Views/Forms/MainFormPageSettings.cpp \
+    Views/Forms/PagesMainForm/MainFormPageSettings.cpp \
     Data/Entity/Employe.cpp \
     Data/DAO/EmployeesDAO.cpp \
     Data/Service/EmployeesService.cpp \
     Data/DAO/ProfessionsDAO.cpp \
     Data/DAO/PredmetsDAO.cpp \
-    Views/Forms/MainFormPageEmployees.cpp \
+    Views/Forms/PagesMainForm/MainFormPageEmployees.cpp \
     Views/Dialogs/AddingEmployeDialog.cpp \
     Views/Dialogs/AddingPupilDialog.cpp \
     Views/Dialogs/AddingParentDialog.cpp \
     Data/Service/ProfessionsService.cpp \
     Utils/Logger.cpp \
-    Views/Forms/MainFormPage.cpp \
+    Views/Forms/PagesMainForm/MainFormPage.cpp \
     Data/Entity/Teacher.cpp \
-    Views/Forms/MainFormPagePupils.cpp \
+    Views/Forms/PagesMainForm/MainFormPagePupils.cpp \
     Data/Service/PupilsService.cpp \
     Data/DAO/ClassesDAO.cpp \
     Data/Service/ClassesService.cpp \
@@ -41,7 +41,8 @@ SOURCES += \
     Data/Service/ParentsService.cpp \
     Data/DAO/TeachersDAO.cpp \
     Data/Service/TeachersService.cpp \
-    Views/Forms/MainFormPageTeachers.cpp
+    Views/Forms/PagesMainForm/MainFormPageTeachers.cpp \
+    Data/Service/PredmetsService.cpp
 
 HEADERS += \
     Exceptions/NotWorkingRequest.h \
@@ -59,7 +60,7 @@ HEADERS += \
     Data/Service/AdministratorsService.h \
     Exceptions/AdministratorNotFound.h \
     Data/DAO/PupilsDAO.h \
-    Views/Forms/MainFormPageSettings.h \
+    Views/Forms/PagesMainForm/MainFormPageSettings.h \
     Data/Entity/Employe.h \
     Data/DAO/EmployeesDAO.h \
     Data/DAO/IEmployeesDAO.h \
@@ -68,16 +69,16 @@ HEADERS += \
     Data/DAO/ProfessionsDAO.h \
     Data/DAO/IPredmetsDAO.h \
     Data/DAO/PredmetsDAO.h \
-    Views/Forms/MainFormPageEmployees.h \
+    Views/Forms/PagesMainForm/MainFormPageEmployees.h \
     Views/Dialogs/AddingEmployeDialog.h \
     Views/Dialogs/AddingPupilDialog.h \
     Views/Dialogs/AddingParentDialog.h \
     Data/Service/ProfessionsService.h \
     Data/Service/IProfessionsService.h \
     Utils/Logger.h \
-    Views/Forms/MainFormPage.h \
+    Views/Forms/PagesMainForm/MainFormPage.h \
     Data/Entity/Teacher.h \
-    Views/Forms/MainFormPagePupils.h \
+    Views/Forms/PagesMainForm/MainFormPagePupils.h \
     Data/Service/IPupilsService.h \
     Data/Service/PupilsService.h \
     Data/DAO/ClassesDAO.h \
@@ -91,7 +92,9 @@ HEADERS += \
     Data/DAO/TeachersDAO.h \
     Data/Service/ITeachersService.h \
     Data/Service/TeachersService.h \
-    Views/Forms/MainFormPageTeachers.h
+    Views/Forms/PagesMainForm/MainFormPageTeachers.h \
+    Data/Service/IPredmetsService.h \
+    Data/Service/PredmetsService.h
 
 FORMS += \
     Views/Forms/LogInForm.ui \

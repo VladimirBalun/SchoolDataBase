@@ -11,7 +11,7 @@ QVector<QString> PredmetsDAO::findAllPredmets() {
     return predmets;
 }
 
-void PredmetsDAO::addPredmet(QString &name) {
+void PredmetsDAO::addPredmet(const QString &name) {
     QSqlQuery query;
     query.prepare("INSERT INTO predmets(name) VALUES(:name)");
     query.bindValue(":name", name);
@@ -21,7 +21,7 @@ void PredmetsDAO::addPredmet(QString &name) {
     }
 }
 
-void PredmetsDAO::removePredmetByName(QString &name) {
+void PredmetsDAO::removePredmetByName(const QString &name) {
     QSqlQuery query;
     query.prepare("DELETE FROM predmets WHERE name = :name");
     query.bindValue(":name", name);
@@ -31,7 +31,7 @@ void PredmetsDAO::removePredmetByName(QString &name) {
     }
 }
 
-void PredmetsDAO::changeNamePredmet(QString &oldName, QString &newName) {
+void PredmetsDAO::changeNamePredmet(const QString &oldName, const QString &newName) {
     QSqlQuery query;
     query.prepare("UPDATE predmets SET name = :newName WHERE name = :oldName");
     query.bindValue(":oldName", oldName);
